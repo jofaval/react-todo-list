@@ -6,3 +6,4 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Project started
 - Repository initialized
 - Dependencies installed
+- Configure absolute paths
