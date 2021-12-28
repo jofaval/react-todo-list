@@ -5,3 +5,4 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Added
 - Project started
 - Repository initialized
+- Dependencies installed
