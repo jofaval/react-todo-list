@@ -16,6 +16,7 @@
     "redux": "^4.1.2",
     "styled-components": "^5.3.3",
     "typescript": "^4.5.4",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",
@@ -53,5 +54,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-redux": "^7.1.21",
+    "@types/redux": "^3.6.0",
+    "@types/uuid": "^8.3.3"
   }
 }
