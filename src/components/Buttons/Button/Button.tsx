@@ -6,6 +6,12 @@ const ButtonStyle = styled.button`
     border-radius: ${props => props.theme.borderRadius};
     border: 2px solid black;
     background: transparent;
+    cursor: pointer;
+
+    &:is(:hover, :focus) {
+        background: black !important;
+        color: white !important;
+    }
 `
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

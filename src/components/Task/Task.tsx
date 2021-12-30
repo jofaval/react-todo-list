@@ -38,11 +38,6 @@ const TaskTitle = styled.h4`
 
 const TaskDelete = styled(Button)`
     margin-left: auto;
-
-    &:is(:hover, :focus) {
-        background: black !important;
-        color: white !important;
-    }
 `
 
 export const Task: React.FC<Props> = ({ task, removeTask }) => {
