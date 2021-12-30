@@ -5,11 +5,24 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore, applyMiddleware, Store } from "redux"
+import { Provider } from "react-redux"
+import thunk from "redux-thunk"
+import reducer from "./store/reducer"
+
+const store: Store<TaskState, TaskAction> & {
+  dispatch: DispatchType
+} = createStore(reducer, applyMiddleware(thunk))
+
+const rootElement = document.getElementById('root');
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
+  rootElement
 );
 
 // If you want your app to work offline and load faster, you can change
