@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { Dispatch } from "redux"
-import { addTask, removeTask } from "src/store/actionCreator";
+import { addTask, removeTask } from "../../store/actionCreator";
 import styled from "styled-components";
 import { AddTask } from "../AddTask/AddTask";
 import Task from "../Task/Task";
