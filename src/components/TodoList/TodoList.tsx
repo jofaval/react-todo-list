@@ -5,6 +5,7 @@ import { addTask, removeTask } from "../../store/actionCreator";
 import styled from "styled-components";
 import { AddTask } from "../AddTask/AddTask";
 import Task from "../Task/Task";
+import TodoProvider from "../../context/TodoProvider";
 
 const TodoListStyle = styled.div`
     display: flex;
@@ -21,25 +22,22 @@ const TodoList: React.FC = () => {
         shallowEqual
     )
 
-    const dispatch: Dispatch<any> = useDispatch()
+    const renderTask = (task: ITask) =>
+        <Task key={task.id} task={task} removeTask={removeTask}/>
 
-    const saveTask = React.useCallback(
-        (task: ITask) => dispatch(addTask(task)),
-        [dispatch]
-    )
+    const shouldRenderTasks = tasks && tasks?.length
 
-    return (
-        <TodoListStyle className="todo-list">
+    return <TodoListStyle className="todo-list">
+        <TodoProvider>
             <TasksTitle>Tasks</TasksTitle>
 
-            <AddTask saveTask={saveTask} />
+            <AddTask />
             
-            {tasks.map((task: ITask) => (
-                <Task key={task.id} task={task} removeTask={removeTask}
-                />
-            ))}
-        </TodoListStyle>
-    )
+            {shouldRenderTasks
+                ? tasks.map(renderTask)
+                : 'No tasks were found.'}
+        </TodoProvider>
+    </TodoListStyle>
 }
 
 export default TodoList;
