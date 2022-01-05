@@ -26,7 +26,7 @@ const TaskWrapper = styled.div`
 
     position: relative;
 
-    &:is(:hover, :focus) {
+    &:is(:hover, :focus, :active) {
         button {
             display: block;
         }
@@ -89,7 +89,7 @@ export const Task: React.FC<Props> = ({ task }) => {
         [dispatch, context?.editTask]
     )
 
-    const taskStatusLabel = task?.complete ? 'O' : 'X';
+    const taskStatusLabel = !task?.complete ? 'O' : 'X';
 
     return <TaskWrapper className={'Task ' + task?.complete && task.complete ? 'complete' : ''}>
         <TaskDetails>
