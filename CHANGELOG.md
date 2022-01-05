@@ -20,6 +20,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Fixed
 - `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty
+- Don't use `<ReduxProvider>`, the Provider doesn't work properly and leaves the state empty
 
 ## 2022-01-04
 ### Added

@@ -5,16 +5,23 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import ReduxProvider from './store/ReduxProvider';
+import { createStore, applyMiddleware, Store } from "redux"
+import { Provider } from "react-redux"
+import thunk from "redux-thunk"
+import reducer from "./store/reducer"
+
+const store: Store<TaskState, TaskAction> & {
+  dispatch: DispatchType
+} = createStore(reducer, applyMiddleware(thunk))
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ReduxProvider>
+  <Provider store={store}>
+    <React.StrictMode>
       <App />
-    </ReduxProvider>
-  </React.StrictMode>,
+    </React.StrictMode>
+  </Provider>,
   rootElement
 );
 
