@@ -2,6 +2,9 @@
 All the changes, additions, bugfixes, etc. made to this project.
 
 ## 2022-01-05
+### Added
+- Create `Task` tests. Now only checking if it renders
+
 ### Modified
 - Refactor and extracted `store` and `<Provider>` from `index.tsx` into separate files and component, the provider is now called `<ReduxProvider>`
 - `<Task>` now doesn't need `removeTask` as a prop, because it properly uses the `TodoContext`.
