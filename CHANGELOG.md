@@ -14,6 +14,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Edit button now only appers if a task is being edited
 - Refactor a little bit the visual style, and implement a purple color theme
 - Redux `Provider` file is now called `ReduxProvider`
+- Now the PWA's manifest title is a more appropiate one, "To-Do List" instead of "React App"
 
 ### Fixed
 - `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty
