@@ -20,7 +20,7 @@ const NoTasksFound = styled.h2`
 
 const TodoList: React.FC = () => {
     const tasks: readonly ITask[] = useSelector(
-        (state: TaskState) => state.tasks,
+        (state: TaskState) => state?.tasks,
         shallowEqual
     )
 
