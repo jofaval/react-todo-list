@@ -14,12 +14,14 @@ const AddTaskForm = styled.form`
 
 const AddTaskElement = styled.div`
   margin: .5rem 0;
+  width: 100%;
   flex: 1;
+  display: block;
 `;
 
 const AddTaskInput = styled.input`
-  padding: .5rem 1rem;
-  width: fill;
+  padding: .5rem 0;
+  width: 100%;
 
   outline: none;
   border: none;
@@ -95,3 +97,5 @@ export const AddTask: React.FC<Props> = () => {
     </Button>
   </>
 }
+
+export default AddTask;

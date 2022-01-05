@@ -7,6 +7,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - `<Task>` now doesn't need `removeTask` as a prop, because it properly uses the `TodoContext`.
 - Refactor `<TodoList>` component
   - Now uses friendly relative paths, and has a `<NoTasksFound>` notice
+- Inputs now have a full width in `<AddTask>`
 
 ## 2022-01-04
 ### Added
