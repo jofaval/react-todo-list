@@ -1,6 +1,10 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-05
+### Modified
+- Refactor and extracted `store` and `<Provider>` from `index.tsx` into separate files and component, the provider is now called `<ReduxProvider>`
+
 ## 2022-01-04
 ### Added
 - Create a `TodoProvider` and implement it, allowing for context usage
