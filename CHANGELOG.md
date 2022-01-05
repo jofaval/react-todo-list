@@ -6,6 +6,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Create `Task` tests. Now only checking if it renders
 - Now there's a button to indicate the complete status, which shows as a green border if completed
 - Add credits section in README.md
+- Install `redux-persist` to save the `state` locally
 
 ### Modified
 - Refactor and extracted `store` and `<Provider>` from `index.tsx` into separate files and component, the provider is now called `<ReduxProvider>`

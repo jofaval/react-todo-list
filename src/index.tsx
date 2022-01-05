@@ -10,17 +10,34 @@ import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import reducer from "./store/reducer"
 
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import { PersistGate } from 'redux-persist/integration/react'
+import Loading from './components/Loading/Loading';
+ 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+ 
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+
 const store: Store<TaskState, TaskAction> & {
   dispatch: DispatchType
-} = createStore(reducer, applyMiddleware(thunk))
+} = createStore(persistedReducer, applyMiddleware(thunk))
+const persistor = persistStore(store)
+
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <PersistGate loading={Loading} persistor={persistor}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </PersistGate>
   </Provider>,
   rootElement
 );
