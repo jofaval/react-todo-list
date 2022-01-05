@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import ReduxProvider from './store/Provider';
+import ReduxProvider from './store/ReduxProvider';
 
 const rootElement = document.getElementById('root');
 

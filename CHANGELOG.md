@@ -13,6 +13,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Inputs now have a full width in `<AddTask>`
 - Edit button now only appers if a task is being edited
 - Refactor a little bit the visual style, and implement a purple color theme
+- Redux `Provider` file is now called `ReduxProvider`
 
 ### Fixed
 - `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty

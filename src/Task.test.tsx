@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { removeTask } from "src/store/actionCreator";
 import Task from './components/Task/Task';
-import ReduxProvider from './store/Provider';
+import ReduxProvider from './store/ReduxProvider';
 
 const ToTest: React.FC = () => {
   return <ReduxProvider>

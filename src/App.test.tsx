@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import ReduxProvider from './store/Provider';
+import ReduxProvider from './store/ReduxProvider';
 
 test('renders to-do list app', () => {
   expect(true).toBe(true);
