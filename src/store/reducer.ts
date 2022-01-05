@@ -2,18 +2,7 @@ import * as actionTypes from "./actionTypes"
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState: TaskState = {
-    tasks: [
-        {
-            id: uuidv4(),
-            title: "post 1",
-            complete: false,
-        },
-        {
-            id: uuidv4(),
-            title: "post 2",
-            complete: false,
-        },
-    ],
+    tasks: [],
 }
 
 const reducer = (
