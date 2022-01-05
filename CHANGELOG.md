@@ -4,6 +4,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 ## 2022-01-05
 ### Added
 - Create `Task` tests. Now only checking if it renders
+- Now there's a button to indicate the complete status, which shows as a green border if completed
 
 ### Modified
 - Refactor and extracted `store` and `<Provider>` from `index.tsx` into separate files and component, the provider is now called `<ReduxProvider>`
@@ -17,6 +18,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Now the PWA's manifest title is a more appropiate one, "To-Do List" instead of "React App"
 - Improved `<Button>` UX with a hovering title and opacity indicator when disabled
 - Refactor tasks display into a separate component called `<Tasks>`
+- Visually improve the `<Task>` component
 
 ### Fixed
 - `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty

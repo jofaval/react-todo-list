@@ -21,7 +21,20 @@ const TaskWrapper = styled.div`
     margin: .5rem;
     /* border: 1px solid black; */
     border-radius: ${props => props.theme.borderRadius};
-    box-shadow: 0 4px 10px rgba(0,0,0,.1)
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    border: 2px solid transparent;
+
+    position: relative;
+
+    &:is(:hover, :focus) {
+        button {
+            display: block;
+        }
+    }
+
+    &:is(.complete) {
+        border-color: ${props => props.theme.secondaryColor};
+    }
 `
 
 const TaskDetails = styled.div`
@@ -30,14 +43,35 @@ const TaskDetails = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-right: auto;
+`
+
+const TaskActions = styled.div`
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    justify-content: end;
 `
 
 const TaskTitle = styled.h4`
     font-size: 1rem;
+    text-align: left;
 `
 
-const TaskDelete = styled(Button)`
-    margin-left: auto;
+const TaskButton = styled(Button)`
+    margin: 0 0 0 .5rem;
+    padding: .5rem 1rem !important;
+    display: none;
+`
+
+const TaskDelete = styled(TaskButton)`
+
+`
+
+const TaskComplete = styled(TaskButton)`
+    margin: 0 0 0 auto;
+    border-color: ${props => props.theme.secondaryColor};
+    color: ${props => props.theme.secondaryColor};
 `
 
 export const Task: React.FC<Props> = ({ task }) => {
@@ -50,16 +84,26 @@ export const Task: React.FC<Props> = ({ task }) => {
         [dispatch, context?.deleteTask]
     )
 
-    return (
-        <TaskWrapper className="Task">
-            <TaskDetails>
-                <TaskTitle>{task.title}</TaskTitle>
-                <p>{task.complete ? 'Done' : 'To-Do'}</p>
-            </TaskDetails>
-
-            <TaskDelete onClick={() => removeTask(task)}>Delete</TaskDelete>
-        </TaskWrapper>
+    const updateTask = React.useCallback(
+        (task: ITask) => dispatch(context?.editTask(task)),
+        [dispatch, context?.editTask]
     )
+
+    const taskStatusLabel = task?.complete ? 'O' : 'X';
+
+    return <TaskWrapper className={'Task ' + task?.complete && task.complete ? 'complete' : ''}>
+        <TaskDetails>
+            <TaskTitle>{task.title}</TaskTitle>
+        </TaskDetails>
+
+        <TaskActions>
+            <TaskComplete onClick={() => updateTask({
+                ...task,
+                complete: !task?.complete,
+            })}>{taskStatusLabel}</TaskComplete>
+            <TaskDelete onClick={() => removeTask(task)}>Delete</TaskDelete>
+        </TaskActions>
+    </TaskWrapper>
 }
 
 export default Task;
