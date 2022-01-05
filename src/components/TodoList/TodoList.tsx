@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, shallowEqual } from "react-redux"
 import styled from "styled-components";
-import { AddTask } from "../AddTask/AddTask";
+import AddTask from "../AddTask/AddTask";
 import Task from "../Task/Task";
-import TodoProvider from "../../context/TodoProvider";
+import TodoProvider from "src/context/TodoProvider";
 
 const TodoListStyle = styled.div`
     display: flex;
@@ -14,14 +14,17 @@ const TasksTitle = styled.h3 `
     margin: 0;
 `
 
+const NoTasksFound = styled.h2`
+    
+`
+
 const TodoList: React.FC = () => {
     const tasks: readonly ITask[] = useSelector(
         (state: TaskState) => state.tasks,
         shallowEqual
     )
 
-    const renderTask = (task: ITask) =>
-        <Task key={task.id} task={task}/>
+    const renderTask = (task: ITask) => <Task key={task.id} task={task}/>
 
     const shouldRenderTasks = tasks && tasks?.length
 
@@ -33,7 +36,7 @@ const TodoList: React.FC = () => {
             
             {shouldRenderTasks
                 ? tasks.map(renderTask)
-                : 'No tasks were found.'}
+                : <NoTasksFound>No tasks were found.</NoTasksFound>}
         </TodoProvider>
     </TodoListStyle>
 }
