@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, shallowEqual } from "react-redux"
-import { removeTask } from "../../store/actionCreator";
 import styled from "styled-components";
 import { AddTask } from "../AddTask/AddTask";
 import Task from "../Task/Task";
@@ -22,7 +21,7 @@ const TodoList: React.FC = () => {
     )
 
     const renderTask = (task: ITask) =>
-        <Task key={task.id} task={task} removeTask={removeTask}/>
+        <Task key={task.id} task={task}/>
 
     const shouldRenderTasks = tasks && tasks?.length
 

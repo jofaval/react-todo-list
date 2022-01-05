@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Dispatch } from "redux"
 import { useDispatch } from "react-redux"
 import styled from "styled-components";
 import Button from "../Buttons/Button/Button";
+import { TodoContext } from "src/context/TodoProvider";
 
 type Props = {
     task: ITask
-    removeTask: (task: ITask) => void
 }
 
 const TaskWrapper = styled.div`
@@ -40,12 +40,14 @@ const TaskDelete = styled(Button)`
     margin-left: auto;
 `
 
-export const Task: React.FC<Props> = ({ task, removeTask }) => {
+export const Task: React.FC<Props> = ({ task }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
-    const deleteTask = React.useCallback(
-        (task: ITask) => dispatch(removeTask(task)),
-        [dispatch, removeTask]
+    const context = useContext(TodoContext);
+
+    const removeTask = React.useCallback(
+        (task: ITask) => dispatch(context?.deleteTask(task)),
+        [dispatch, context?.deleteTask]
     )
 
     return (
@@ -55,7 +57,7 @@ export const Task: React.FC<Props> = ({ task, removeTask }) => {
                 <p>{task.complete ? 'Done' : 'To-Do'}</p>
             </TaskDetails>
 
-            <TaskDelete onClick={() => deleteTask(task)}>Delete</TaskDelete>
+            <TaskDelete onClick={() => removeTask(task)}>Delete</TaskDelete>
         </TaskWrapper>
     )
 }
