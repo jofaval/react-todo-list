@@ -5,6 +5,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Added
 - Create a `TodoProvider` and implement it, allowing for context usage
 - Configure `gh-pages` deploy
+- Create a basic Github Action to deploy a `gh-page` with a Node environment
 
 ### Fixed
 - `tsconfig.json` can have now a `react-jsx` value because the webpack works and compiles properly
