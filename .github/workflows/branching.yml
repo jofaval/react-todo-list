@@ -8,6 +8,8 @@ on:
 jobs:
   Deployment:
     runs-on: ubuntu-latest
+    env:
+      CI: false
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -17,18 +19,15 @@ jobs:
 
       - name: Install packages
         run: npm install
-        env:
-          CI: false
+
+      - name: Run all tests, DO NOT deploy if they fail
+        run: npm run test
 
       - name: Prepare the build
         run: npm run build
-        env:
-          CI: false
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
           folder: build
-        env:
-          CI: false
