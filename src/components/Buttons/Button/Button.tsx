@@ -12,11 +12,22 @@ const ButtonStyle = styled.button`
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
+    transition: all .2s;
 
-    &:is(:hover, :focus):not([disabled=""]) {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0);
+
+    &:is(:disalbed, [disabled]) {
+        transition: all 0.2s;
+
+        opacity: .6;
+    }
+
+    &:is(:hover, :focus):not(:disabled, [disabled]) {
+        transition: all 0.2s;
+
         background: linear-gradient(to right, ${props => props.theme.mainColor}, ${props => props.theme.mainColorAccent}) !important;
         color: ${props => props.theme.bgColor} !important;
-        // border-color: ${props => props.theme.bgColor};
+        border-color: ${props => props.theme.bgColor};
         border-color: transparent;
         box-shadow: 0 .5rem 1rem ${props => props.theme.mainColorShadow};
     }

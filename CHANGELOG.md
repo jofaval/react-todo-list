@@ -15,6 +15,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Refactor a little bit the visual style, and implement a purple color theme
 - Redux `Provider` file is now called `ReduxProvider`
 - Now the PWA's manifest title is a more appropiate one, "To-Do List" instead of "React App"
+- Improved `<Button>` UX with a hovering title and opacity indicator when disabled
 
 ### Fixed
 - `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty

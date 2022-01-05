@@ -22,6 +22,7 @@ const AddTaskElement = styled.div`
 const AddTaskInput = styled.input`
   padding: .5rem 0 .5rem 1em;
   width: calc(100% - 1em);
+  max-width: ${props => props.theme.maxResponsiveWidth};
 
   outline: none;
   border: none;
@@ -32,7 +33,7 @@ const AddTaskInput = styled.input`
 `;
 
 const AddTaskButton = styled(Button)`
-  max-width: 400px;
+  max-width: ${props => props.theme.maxResponsiveWidth};
   width: 100%;
   margin: auto;
 
@@ -43,7 +44,8 @@ const Label = styled.label`
   color: ${props => props.theme.mainColorAccent};
   text-align: left;
   display: block;
-  margin: .5rem 0;
+  margin: .5rem auto;
+  max-width: ${props => props.theme.maxResponsiveWidth};
 `;
 
 const initialTask: ITask = {
@@ -114,7 +116,7 @@ export const AddTask: React.FC<Props> = () => {
       ? <AddTaskButton onClick={(e) => updateTask(e)} disabled={!canSubmit} id="edit">
         Edit task
       </AddTaskButton>
-      : <AddTaskButton onClick={(e) => addNewTask(e)} disabled={!canSubmit} id="save">
+      : <AddTaskButton onClick={(e) => addNewTask(e)} disabled={!canSubmit} title={!canSubmit ? 'You can\'t submit without a title' : ''} id="save">
         Add task
       </AddTaskButton>}
   </>
