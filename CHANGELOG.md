@@ -12,6 +12,9 @@ All the changes, additions, bugfixes, etc. made to this project.
   - Now uses friendly relative paths, and has a `<NoTasksFound>` notice
 - Inputs now have a full width in `<AddTask>`
 
+### Fixed
+- `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty
+
 ## 2022-01-04
 ### Added
 - Create a `TodoProvider` and implement it, allowing for context usage
