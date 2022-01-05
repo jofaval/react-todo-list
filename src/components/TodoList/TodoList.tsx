@@ -19,8 +19,6 @@ const TodoList: React.FC = () => {
         <TodoProvider>
             <TasksTitle>Tasks</TasksTitle>
 
-            <AddTask />
-            
             <Tasks />
 
             <AddTask />
