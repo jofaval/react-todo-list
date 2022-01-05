@@ -87,10 +87,10 @@ export const AddTask: React.FC<Props> = () => {
         </AddTaskElement>
     </AddTaskForm>
 
-    <Button onClick={(e) => updateTask(e)} disabled={canSubmit} id="edit">
+    <Button onClick={(e) => updateTask(e)} disabled={!canSubmit} id="edit">
         Edit task
     </Button>
-    <Button onClick={(e) => addNewTask(e)} disabled={canSubmit} id="save">
+    <Button onClick={(e) => addNewTask(e)} disabled={!canSubmit} id="save">
         Add task
     </Button>
   </>
