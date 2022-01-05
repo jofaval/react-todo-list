@@ -53,6 +53,12 @@ const initialTask: ITask = {
   complete: false,
 };
 
+const Wrapper = styled.div`
+  max-width: ${props => props.theme.maxResponsiveWidth};
+  width: 100%;
+  margin: auto;
+`
+
 export const AddTask: React.FC<Props> = () => {
   const [task, setTask] = React.useState<ITask | typeof initialTask>(initialTask)
 
@@ -88,7 +94,7 @@ export const AddTask: React.FC<Props> = () => {
   const canSubmit = task?.title ? true : false
   const isEditing = task?.id ? true : false;
 
-  return <>
+  return <Wrapper>
       <AddTaskForm onSubmit={submit} className="Add-task">
         <AddTaskElement>
           <Label>Title</Label>
@@ -119,7 +125,7 @@ export const AddTask: React.FC<Props> = () => {
       : <AddTaskButton onClick={(e) => addNewTask(e)} disabled={!canSubmit} title={!canSubmit ? 'You can\'t submit without a title' : ''} id="save">
         Add task
       </AddTaskButton>}
-  </>
+  </Wrapper>
 }
 
 export default AddTask;
