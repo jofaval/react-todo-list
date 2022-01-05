@@ -66,6 +66,7 @@ export const AddTask: React.FC<Props> = () => {
   }
 
   const canSubmit = task?.title ? true : false
+  const isEditing = task?.id ? true : false;
 
   return <>
       <AddTaskForm onSubmit={submit} className="Add-task">
@@ -89,12 +90,13 @@ export const AddTask: React.FC<Props> = () => {
         </AddTaskElement>
     </AddTaskForm>
 
-    <Button onClick={(e) => updateTask(e)} disabled={!canSubmit} id="edit">
+    {isEditing
+      ? <AddTaskButton onClick={(e) => updateTask(e)} disabled={!canSubmit} id="edit">
         Edit task
-    </Button>
-    <Button onClick={(e) => addNewTask(e)} disabled={!canSubmit} id="save">
+      </AddTaskButton>
+      : <AddTaskButton onClick={(e) => addNewTask(e)} disabled={!canSubmit} id="save">
         Add task
-    </Button>
+      </AddTaskButton>}
   </>
 }
 

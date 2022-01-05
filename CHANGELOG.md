@@ -11,6 +11,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Refactor `<TodoList>` component
   - Now uses friendly relative paths, and has a `<NoTasksFound>` notice
 - Inputs now have a full width in `<AddTask>`
+- Edit button now only appers if a task is being edited
 
 ### Fixed
 - `<ReduxProvider>` didn't call the `{children}` so all the tests were failing just because of that, there was nothing to check, it was empty
