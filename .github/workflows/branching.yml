@@ -17,12 +17,18 @@ jobs:
 
       - name: Install packages
         run: npm install
+        env:
+          CI: false
 
       - name: Prepare the build
         run: npm run build
+        env:
+          CI: false
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
           folder: build
+        env:
+          CI: false
