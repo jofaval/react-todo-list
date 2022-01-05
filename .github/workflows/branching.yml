@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  Explore-GitHub-Actions:
+  Deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
