@@ -12,10 +12,11 @@ const TodoListStyle = styled.div`
 
 const TasksTitle = styled.h3 `
     margin: 0;
+    color: ${props => props.theme.mainColor};
 `
 
 const NoTasksFound = styled.h2`
-    
+    color: ${props => props.theme.mainColor};
 `
 
 const TodoList: React.FC = () => {

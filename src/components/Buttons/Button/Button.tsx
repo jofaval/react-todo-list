@@ -4,13 +4,21 @@ import styled from "styled-components";
 const ButtonStyle = styled.button`
     padding: .5rem 1rem;
     border-radius: ${props => props.theme.borderRadius};
-    border: 2px solid black;
-    background: transparent;
+    border: 2px solid ${props => props.theme.mainColor};
+    color: ${props => props.theme.mainColor};
+    margin: auto;
+    padding: 1rem 0 !important;
+    background: ${props => props.theme.bgColor};
     cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
 
-    &:is(:hover, :focus) {
-        background: black !important;
-        color: white !important;
+    &:is(:hover, :focus):not([disabled=""]) {
+        background: linear-gradient(to right, ${props => props.theme.mainColor}, ${props => props.theme.mainColorAccent}) !important;
+        color: ${props => props.theme.bgColor} !important;
+        // border-color: ${props => props.theme.bgColor};
+        border-color: transparent;
+        box-shadow: 0 .5rem 1rem ${props => props.theme.mainColorShadow};
     }
 `
 

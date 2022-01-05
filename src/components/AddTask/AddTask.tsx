@@ -20,12 +20,30 @@ const AddTaskElement = styled.div`
 `;
 
 const AddTaskInput = styled.input`
-  padding: .5rem 0;
-  width: 100%;
+  padding: .5rem 0 .5rem 1em;
+  width: calc(100% - 1em);
 
   outline: none;
   border: none;
-  border-bottom: 2px solid rgba(0,0,0,0.2);
+  border-left: 3px solid ${props => props.theme.mainColorAccent};
+
+  color: ${props => props.theme.mainColor};
+  font-size: 14px;
+`;
+
+const AddTaskButton = styled(Button)`
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+
+  margin-top: 1rem;
+`
+
+const Label = styled.label`
+  color: ${props => props.theme.mainColorAccent};
+  text-align: left;
+  display: block;
+  margin: .5rem 0;
 `;
 
 const initialTask: ITask = {
@@ -71,6 +89,7 @@ export const AddTask: React.FC<Props> = () => {
   return <>
       <AddTaskForm onSubmit={submit} className="Add-task">
         <AddTaskElement>
+          <Label>Title</Label>
           <AddTaskInput
               type="text"
               id="title"
@@ -80,6 +99,7 @@ export const AddTask: React.FC<Props> = () => {
           />
         </AddTaskElement>
         <AddTaskElement>
+          <Label>Description</Label>
           <AddTaskInput
               type="text"
               id="body"

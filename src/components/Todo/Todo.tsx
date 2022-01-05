@@ -4,17 +4,19 @@ import TodoList from "../TodoList/TodoList";
 
 const Container = styled.main`
     padding: .5rem;
-    border: 1px solid black
+    // border: 1px solid black
 `;
 
 const Title = styled.h1`
     margin: 0;
     font-size: 24pt;
+    color: ${props => props.theme.mainColor};
 `;
 
 const Subtitle = styled.h2`
     margin: 0;
     font-size: 16pt;
+    color: ${props => props.theme.mainColorAccent};
 `;
 
 /**

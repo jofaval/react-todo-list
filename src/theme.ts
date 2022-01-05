@@ -5,5 +5,9 @@ export const theme = {
         border: '2px solid black',
         borderRadius: '.25rem',
     },
-    borderRadius: '.25rem'
+    borderRadius: '.25rem',
+    mainColor: 'hsl(256, 64%, 62%)',
+    mainColorAccent: 'hsl(256, 69%, 69%)',
+    mainColorShadow: 'hsla(256, 64%, 62%, 0.3)',
+    bgColor: 'hsl(255, 100%, 100%)',
 }
