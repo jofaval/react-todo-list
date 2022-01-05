@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import React from "react";
 
 import { Dispatch } from "redux"
 import { useDispatch } from "react-redux"

@@ -14,10 +14,6 @@ export const TodoContext = React.createContext<ITodoContext | null>(null);
 export const TodoProvider: React.FC = ({ children, ...props }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
-    const createTodoCallback = (callabe: (task: ITask | any) => void) => {
-        return 
-    };
-
     const saveTask = React.useCallback(
         (task: ITask) => dispatch(addTask(task)),
         [dispatch, addTask]

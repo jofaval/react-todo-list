@@ -1,5 +1,5 @@
-import React, { FC, useContext } from "react"
-import TodoProvider, { TodoContext } from "../../context/TodoProvider";
+import React, { useContext } from "react"
+import { TodoContext } from "../../context/TodoProvider";
 import styled from "styled-components"
 import Button from "../Buttons/Button/Button";
 
