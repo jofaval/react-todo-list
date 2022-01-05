@@ -76,3 +76,28 @@ test('delete a task', async () => {
   // Check if exists
   expect(screen.queryByText(/New task/i)).not.toBeInTheDocument();
 });
+
+test('update a task', async () => {
+  const store: Store<TaskState, TaskAction> & {
+    dispatch: DispatchType
+  } = createStore(reducer, applyMiddleware(thunk))
+
+  render(<Provider store={store}>
+    <App />
+  </Provider>);
+
+  // Set task data
+  const title = screen.getByPlaceholderText(/Title/i);
+  fireEvent.change(title, { target: { value: 'New task' } });
+
+  // Create the task
+  const addTaskButton = screen.getByText(/ADD TASK/iu);
+  fireEvent.click(addTaskButton);
+
+  // Delete the task
+  const taskDeleteButton = screen.getAllByText(/DELETE/i);
+  taskDeleteButton.map(button => fireEvent.click(button))
+
+  // Check if exists
+  expect(screen.queryByText(/New task/i)).not.toBeInTheDocument();
+});
