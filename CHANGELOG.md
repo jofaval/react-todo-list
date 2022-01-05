@@ -7,6 +7,9 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Configure `gh-pages` deploy
 - Create a basic Github Action to deploy a `gh-page` with a Node environment
 
+### Modified
+- Now the inputs get cleaned after your submission
+
 ### Fixed
 - `tsconfig.json` can have now a `react-jsx` value because the webpack works and compiles properly
 

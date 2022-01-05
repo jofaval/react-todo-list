@@ -26,8 +26,13 @@ const AddTaskInput = styled.input`
   border-bottom: 2px solid rgba(0,0,0,0.2);
 `;
 
+const initialTask: ITask = {
+  title: '',
+  complete: false,
+};
+
 export const AddTask: React.FC<Props> = () => {
-  const [task, setTask] = React.useState<ITask | {}>()
+  const [task, setTask] = React.useState<ITask | typeof initialTask>(initialTask)
 
   const todoCtx = useContext(TodoContext);
 
@@ -38,6 +43,10 @@ export const AddTask: React.FC<Props> = () => {
     })
   }
 
+  const cleanInputs = () => {
+    setTask(initialTask)
+  }
+
   const submit = (e: React.FormEvent) => {
       e.preventDefault();
   }
@@ -45,37 +54,43 @@ export const AddTask: React.FC<Props> = () => {
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
     if (todoCtx) todoCtx.saveTask(task)
+    cleanInputs();
   }
 
   const updateTask = (e: React.FormEvent) => {
     e.preventDefault()
     if (todoCtx) todoCtx.editTask(task)
+    cleanInputs();
   }
+
+  const canSubmit = task?.title ? true : false
 
   return <>
       <AddTaskForm onSubmit={submit} className="Add-task">
         <AddTaskElement>
-        <AddTaskInput
-            type="text"
-            id="title"
-            placeholder="Title"
-            onChange={handleTaskData}
-        />
+          <AddTaskInput
+              type="text"
+              id="title"
+              placeholder="Title"
+              value={task?.title}
+              onChange={handleTaskData}
+          />
         </AddTaskElement>
         <AddTaskElement>
-        <AddTaskInput
-            type="text"
-            id="body"
-            placeholder="Description"
-            onChange={handleTaskData}
-        />
+          <AddTaskInput
+              type="text"
+              id="body"
+              placeholder="Description"
+              value={task?.title}
+              onChange={handleTaskData}
+          />
         </AddTaskElement>
     </AddTaskForm>
 
-    <Button onClick={(e) => updateTask(e)} disabled={!task ? true : false} id="edit">
+    <Button onClick={(e) => updateTask(e)} disabled={canSubmit} id="edit">
         Edit task
     </Button>
-    <Button onClick={(e) => addNewTask(e)} disabled={!task ? true : false} id="save">
+    <Button onClick={(e) => addNewTask(e)} disabled={canSubmit} id="save">
         Add task
     </Button>
   </>
