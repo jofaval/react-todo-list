@@ -1,6 +1,10 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-06
+### Fixed
+- Complete button not changing to it's own color when hovered
+
 ## 2022-01-05
 ### Added
 - Create `Task` tests. Now only checking if it renders

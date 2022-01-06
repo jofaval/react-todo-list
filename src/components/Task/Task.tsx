@@ -74,6 +74,12 @@ const TaskComplete = styled(TaskButton)`
     margin: 0 0 0 auto;
     border-color: ${props => props.theme.secondaryColor};
     color: ${props => props.theme.secondaryColor};
+
+    &:is(:hover, :focus, :active):not(:disabled, [disabled])
+    {
+        background: linear-gradient(to right, ${props => props.theme.secondaryColor}, ${props => props.theme.secondaryColorAccent}) !important;
+        box-shadow: 0 .5rem 1rem ${props => props.theme.secondaryColorShadow};
+    }
 `
 
 export const Task: React.FC<Props> = ({ task }) => {
