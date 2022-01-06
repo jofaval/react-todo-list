@@ -56,6 +56,8 @@ const TaskActions = styled.div`
 const TaskTitle = styled.h4`
     font-size: 1rem;
     text-align: left;
+
+    color: ${props => props.theme.mainColor};
 `
 
 const TaskButton = styled(Button)`
