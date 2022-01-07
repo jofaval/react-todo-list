@@ -61,6 +61,10 @@ const Wrapper = styled.div`
   margin: auto;
 `
 
+const AddTaskSubmit = styled(AddTaskButton)`
+  display: none;
+`
+
 export const AddTask: React.FC<Props> = () => {
   const [task, setTask] = React.useState<ITask | typeof initialTask>(initialTask)
 
@@ -100,6 +104,10 @@ export const AddTask: React.FC<Props> = () => {
 
   const submit = (e: React.FormEvent) => {
       e.preventDefault();
+
+      isEditing
+        ? updateTask(e)
+        : addNewTask(e);
   }
 
   const addNewTask = (e: React.FormEvent) => {
@@ -151,6 +159,7 @@ export const AddTask: React.FC<Props> = () => {
               onChange={handleTaskData}
           />
         </AddTaskElement>
+        <AddTaskSubmit type="submit">Submit</AddTaskSubmit>
     </AddTaskForm>
 
     {isEditing

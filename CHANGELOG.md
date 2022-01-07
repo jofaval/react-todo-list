@@ -5,6 +5,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Added
 - Now there's a `description` field now implemented
 - And also a `category` field, by hand, atm.
+- Submit is now implemented, meaning the UX is improved by enabling native submission with `Enter`
 
 ### Modified
 - User input value on `<AddTask>` gets trimmed
