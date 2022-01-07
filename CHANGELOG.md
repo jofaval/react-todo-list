@@ -8,6 +8,9 @@ All the changes, additions, bugfixes, etc. made to this project.
   - New state actions (`SET_EDITED_TASK` and `FINISH_EDITING_TASK`)
   - And `connect` in the `<AddTask>` component
 
+### Modified
+- Refactor complete status change into a separate `styled` component
+
 ## 2022-01-06
 ### Added
 - Now there's a `description` field now implemented

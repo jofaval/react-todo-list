@@ -34,14 +34,14 @@ const TaskWrapper = styled.div`
             display: block;
         }
     }
+`
 
-    &:is(.complete) {
-        transition: all .2s;
-        // border-color: ${props => props.theme.secondaryColor};
-        box-shadow: 0 0px 25px ${props => props.theme.secondaryColorShadow};
-        max-width: 90%;
-        margin-left: 10%;
-    }
+const TaskCompleteWrapper = styled(TaskWrapper)`
+    transition: all .2s;
+    // border-color: ${props => props.theme.secondaryColor};
+    box-shadow: 0 0px 25px ${props => props.theme.secondaryColorShadow};
+    max-width: 90%;
+    margin-left: 10%;
 `
 
 const TaskDetails = styled.div`
@@ -146,7 +146,9 @@ export const Task: React.FC<Props> = ({ task }) => {
         editTask(task);
     }
 
-    return <TaskWrapper className={'Task ' + task?.complete && task.complete ? 'complete' : ''}>
+    const TaskContainer = task?.complete ? TaskWrapper : TaskCompleteWrapper;
+
+    return <TaskContainer className="task">
         <TaskDetails>
             <TaskTitle>{task.title}</TaskTitle>
             <TaskDescription>{task?.description}</TaskDescription>
@@ -161,7 +163,7 @@ export const Task: React.FC<Props> = ({ task }) => {
             <TaskEdit onClick={() => edit(task)}>Edit</TaskEdit>
             <TaskDelete onClick={() => removeTask(task)}>Delete</TaskDelete>
         </TaskActions>
-    </TaskWrapper>
+    </TaskContainer>
 }
 
 export default Task;
