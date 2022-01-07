@@ -51,6 +51,7 @@ const Label = styled.label`
 const initialTask: ITask = {
   title: '',
   description: '',
+  category: '',
   complete: false,
 };
 
@@ -137,6 +138,16 @@ export const AddTask: React.FC<Props> = () => {
               id="description"
               placeholder="Description"
               value={task?.description}
+              onChange={handleTaskData}
+          />
+        </AddTaskElement>
+        <AddTaskElement>
+          <Label>Category</Label>
+          <AddTaskInput
+              type="text"
+              id="category"
+              placeholder="Home, work..."
+              value={task?.category}
               onChange={handleTaskData}
           />
         </AddTaskElement>

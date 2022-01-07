@@ -70,6 +70,17 @@ const TaskDescription = styled.h5`
     color: ${props => props.theme.mainColorAccent};
 `
 
+const TaskCategory = styled.h5`
+    text-align: left;
+    margin: 0;
+
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    color: ${props => props.theme.mainColorAccent};
+`
+
 const TaskButton = styled(Button)`
     margin: 0 0 0 .5rem;
     padding: .5rem 1rem !important;
@@ -113,6 +124,7 @@ export const Task: React.FC<Props> = ({ task }) => {
         <TaskDetails>
             <TaskTitle>{task.title}</TaskTitle>
             <TaskDescription>{task?.description}</TaskDescription>
+            <TaskCategory>{task?.category}</TaskCategory>
         </TaskDetails>
 
         <TaskActions>

@@ -4,6 +4,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 ## 2022-01-06
 ### Added
 - Now there's a `description` field now implemented
+- And also a `category` field, by hand, atm.
 
 ### Modified
 - User input value on `<AddTask>` gets trimmed
