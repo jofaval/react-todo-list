@@ -155,6 +155,7 @@ export const AddTask: React.FC<Props> = (props) => {
               id="title"
               placeholder="Title"
               value={task?.title}
+              required={true}
               onChange={handleTaskData}
           />
         </AddTaskElement>
