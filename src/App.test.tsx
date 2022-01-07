@@ -95,9 +95,16 @@ test('update a task', async () => {
   fireEvent.click(addTaskButton);
 
   // Delete the task
-  const taskDeleteButton = screen.getAllByText(/DELETE/i);
-  taskDeleteButton.map(button => fireEvent.click(button))
+  const taskEditButton = screen.getAllByText(/EDIT/i);
+  taskEditButton.map(button => fireEvent.click(button))
+
+  // Change the title
+  fireEvent.change(title, { target: { value: 'Edited task' } });
+
+  // Submit the the mutated task
+  const editTaskButton = screen.getByText(/EDIT TASK/iu);
+  fireEvent.click(editTaskButton);
 
   // Check if exists
-  expect(screen.queryByText(/New task/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/Edited task/i)).toBeInTheDocument();
 });
