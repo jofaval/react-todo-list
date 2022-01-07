@@ -7,6 +7,10 @@ All the changes, additions, bugfixes, etc. made to this project.
   - A new task button
   - New state actions (`SET_EDITED_TASK` and `FINISH_EDITING_TASK`)
   - And `connect` in the `<AddTask>` component
+- Add new tests
+  - Edit/Update test
+  - Field tests
+  - Correct functionality
 
 ### Modified
 - Refactor complete status change into a separate `styled` component
