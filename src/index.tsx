@@ -33,7 +33,7 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={Loading} persistor={persistor}>
+    <PersistGate loading={<Loading />} persistor={persistor}>
       <React.StrictMode>
         <App />
       </React.StrictMode>
