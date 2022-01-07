@@ -53,6 +53,17 @@ registerRoute(
   createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
 );
 
+const statusPlugin = {
+  fetchDidSucceed: ({response}: any) => {
+    if (response.status >= 500) {
+      // Throwing anything here will trigger fetchDidFail.
+      throw new Error('Server error.');
+    }
+    // If it's not 5xx, use the response as-is.
+    return response;
+  },
+};
+
 // An example runtime caching route for requests that aren't handled by the
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
@@ -65,6 +76,7 @@ registerRoute(
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
       new ExpirationPlugin({ maxEntries: 50 }),
+      statusPlugin
     ],
   })
 );
@@ -77,4 +89,59 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// Any other custom service worker logic can 
+export {};
+
+import { version } from "../package.json";
+
+const CACHE_NAME = `static-cache-${1}`;
+const filesToCache = ["/"];
+
+/**
+ * Cache files on install
+ */
+self.addEventListener("install", event => {
+  event.waitUntil(
+    (async function() {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(filesToCache);
+    })()
+  );
+});
+
+/**
+ * Delete outdated caches when activated
+ */
+self.addEventListener("activate", event => {
+  self.clients.claim();
+
+  event.waitUntil(
+    (async function() {
+      // Remove old caches.
+      const promises = (await caches.keys()).map(cacheName => {
+        if (CACHE_NAME !== cacheName) {
+          return caches.delete(cacheName);
+        }
+      });
+
+      await Promise.all<any>(promises);
+    })()
+  );
+});
+
+/**
+ * Reply with cached data when possible
+ */
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") {
+    return;
+  }
+  event.respondWith(
+    (async function() {
+      const cachedResponse = await caches.match(event.request, {
+        ignoreSearch: true
+      });
+      return cachedResponse || fetch(event.request);
+    })()
+  );
+});
