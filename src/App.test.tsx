@@ -94,7 +94,7 @@ test('update a task', async () => {
   const addTaskButton = screen.getByText(/ADD TASK/iu);
   fireEvent.click(addTaskButton);
 
-  // Delete the task
+  // Edit the task
   const taskEditButton = screen.getAllByText(/EDIT/i);
   taskEditButton.map(button => fireEvent.click(button))
 
