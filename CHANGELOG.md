@@ -8,6 +8,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Modified
 - User input value on `<AddTask>` gets trimmed
+- Visually redesign `complete` status
 
 ### Fixed
 - Complete button not changing to it's own color when hovered

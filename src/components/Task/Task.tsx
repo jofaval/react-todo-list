@@ -33,7 +33,13 @@ const TaskWrapper = styled.div`
     }
 
     &:is(.complete) {
-        border-color: ${props => props.theme.secondaryColor};
+        // border-color: ${props => props.theme.secondaryColor};
+        box-shadow: 0 0px 25px ${props => props.theme.secondaryColorShadow};
+        border-width: 4px;
+        border-image: linear-gradient(
+            ${props => props.theme.mainColorShadow},
+            ${props => props.theme.secondaryColorShadow}
+        ) 2;
     }
 `
 
