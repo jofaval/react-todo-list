@@ -16,6 +16,8 @@ const ToTest: React.FC = () => {
   return <Provider store={store}>
     <Task task={{
       title: 'Test',
+      description: 'Desc',
+      category: 'Category',
       complete: false
     }} />
   </Provider>
@@ -24,6 +26,20 @@ const ToTest: React.FC = () => {
 test('renders a task', () => {
   render(<ToTest />);
 
-  const taskElement = screen.getByText(/Test/)
+  const taskElement = screen.getByText(/Test/i)
+  expect(taskElement).toBeInTheDocument();
+});
+
+test('renders a task, with a description', () => {
+  render(<ToTest />);
+
+  const taskElement = screen.getByText(/Desc/i)
+  expect(taskElement).toBeInTheDocument();
+});
+
+test('renders a task, with a category', () => {
+  render(<ToTest />);
+
+  const taskElement = screen.getByText(/Category/i)
   expect(taskElement).toBeInTheDocument();
 });
