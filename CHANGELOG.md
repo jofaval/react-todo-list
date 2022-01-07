@@ -10,6 +10,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Fixed
 - Complete button not changing to it's own color when hovered
+- Incorrect trimming, not working because it always trimmed, and it should have only been trimming when submitting
 
 ## 2022-01-05
 ### Added

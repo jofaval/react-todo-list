@@ -68,14 +68,29 @@ export const AddTask: React.FC<Props> = () => {
   const handleTaskData = (e: React.FormEvent<HTMLInputElement>) => {
     let value: any = e.currentTarget.value;
 
-    // Trim user input only if it's a String
-    if (typeof value === 'string' || value instanceof String)
-      value = value.trim();
-
     setTask({
       ...task,
       [e.currentTarget.id]: value,
     })
+  }
+
+  const prepareTask = () => {
+    let tempTask: ITask = task;
+
+    for (const field in tempTask) {
+      if (Object.prototype.hasOwnProperty.call(tempTask, field)) {
+        let value: any = tempTask[field];
+
+        // Trim user input only if it's a String
+        if (typeof value === 'string' || value instanceof String) {
+          value = value.trim();
+        }
+
+        tempTask = { ...tempTask, [field]: value };
+      }
+    }
+
+    setTask(tempTask);
   }
 
   const cleanInputs = () => {
@@ -88,12 +103,14 @@ export const AddTask: React.FC<Props> = () => {
 
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
+    prepareTask();
     if (todoCtx) todoCtx.saveTask(task)
     cleanInputs();
   }
 
   const updateTask = (e: React.FormEvent) => {
     e.preventDefault()
+    prepareTask();
     if (todoCtx) todoCtx.editTask(task)
     cleanInputs();
   }
