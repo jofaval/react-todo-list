@@ -1,6 +1,13 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-07
+### Added
+- Create and implement the edit functionality, with:
+  - A new task button
+  - New state actions (`SET_EDITED_TASK` and `FINISH_EDITING_TASK`)
+  - And `connect` in the `<AddTask>` component
+
 ## 2022-01-06
 ### Added
 - Now there's a `description` field now implemented

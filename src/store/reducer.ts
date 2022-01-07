@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const initialState: TaskState = {
     tasks: [],
+    editedTask: undefined,
 }
 
 const reducer = (
@@ -30,6 +31,15 @@ const reducer = (
             )
 
             return { ...state, tasks: updatedTasks, }
+        case actionTypes.SET_EDITED_TASK:
+            const targetId = action.task.id;
+            const taskToEdit: ITask|undefined = state.tasks.find(
+                ({ id }) => id === targetId
+            );
+
+            return { ...state, editedTask: taskToEdit };
+        case actionTypes.FINISH_EDITING_TASK:
+            return { ...state, editedTask: undefined };
     }
     return state
 }

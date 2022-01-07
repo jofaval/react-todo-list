@@ -19,15 +19,13 @@ const persistConfig = {
   key: 'root',
   storage,
 }
- 
-const persistedReducer = persistReducer(persistConfig, reducer)
 
+const persistedReducer = persistReducer(persistConfig, reducer)
 
 const store: Store<TaskState, TaskAction> & {
   dispatch: DispatchType
 } = createStore(persistedReducer, applyMiddleware(thunk))
 const persistor = persistStore(store)
-
 
 const rootElement = document.getElementById('root');
 

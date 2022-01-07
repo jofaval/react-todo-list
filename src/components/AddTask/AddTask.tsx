@@ -2,9 +2,12 @@ import React, { useContext } from "react"
 import { TodoContext } from "../../context/TodoProvider";
 import styled from "styled-components"
 import Button from "../Buttons/Button/Button";
+import { connect, useDispatch } from "react-redux";
+import { finishEditingTask } from "src/store/actionCreator";
+import { Dispatch } from "redux";
 
 type Props = {
-  
+  task?: ITask
 }
 
 const AddTaskForm = styled.form`
@@ -65,8 +68,14 @@ const AddTaskSubmit = styled(AddTaskButton)`
   display: none;
 `
 
-export const AddTask: React.FC<Props> = () => {
-  const [task, setTask] = React.useState<ITask | typeof initialTask>(initialTask)
+export const AddTask: React.FC<Props> = (props) => {
+  const [task, setTask] = React.useState<ITask | typeof initialTask>(
+    props?.task ? props.task : initialTask
+  );
+
+  React.useEffect(() => {
+    if (props?.task) setTask(props.task);
+  }, [props?.task])
 
   const todoCtx = useContext(TodoContext);
 
@@ -117,10 +126,20 @@ export const AddTask: React.FC<Props> = () => {
     cleanInputs();
   }
 
+  const dispatch: Dispatch<any> = useDispatch()
+
+  const stopEditing = React.useCallback(
+    (task: ITask) => dispatch(finishEditingTask(task)),
+    [dispatch, finishEditingTask]
+  );
+
   const updateTask = (e: React.FormEvent) => {
     e.preventDefault()
     prepareTask();
-    if (todoCtx) todoCtx.editTask(task)
+    if (todoCtx) {
+      todoCtx.editTask(task)
+      stopEditing(task);
+    }
     cleanInputs();
   }
 
@@ -172,4 +191,10 @@ export const AddTask: React.FC<Props> = () => {
   </Wrapper>
 }
 
-export default AddTask;
+const mapStateToProps = (state: TaskState) => {
+  const { editedTask } = state;
+
+  return { task: editedTask };
+};
+
+export default connect(mapStateToProps)(AddTask);

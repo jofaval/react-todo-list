@@ -8,6 +8,7 @@ interface ITask extends Record<string,any> {
 
 type TaskState = {
     tasks: ITask[]
+    editedTask?: ITask,
 }
 
 type TaskAction = {

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import styled from "styled-components";
 import Button from "../Buttons/Button/Button";
 import { TodoContext } from "src/context/TodoProvider";
+import { finishEditingTask, setEditedTask } from "src/store/actionCreator";
 
 type Props = {
     task: ITask
@@ -109,6 +110,10 @@ const TaskComplete = styled(TaskButton)`
     }
 `
 
+const TaskEdit = styled(TaskButton)`
+    filter: hue-rotate(-50deg);
+`
+
 export const Task: React.FC<Props> = ({ task }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
@@ -126,6 +131,21 @@ export const Task: React.FC<Props> = ({ task }) => {
 
     const taskStatusLabel = !task?.complete ? 'O' : 'X';
 
+    const editTask = React.useCallback(
+        (task: ITask) => dispatch(setEditedTask(task)),
+        [dispatch, setEditedTask]
+    )
+
+    const stopEdittingTask = React.useCallback(
+        (task: ITask) => dispatch(finishEditingTask(task)),
+        [dispatch, finishEditingTask]
+    )
+
+    const edit = (task: ITask) => {
+        stopEdittingTask(task);
+        editTask(task);
+    }
+
     return <TaskWrapper className={'Task ' + task?.complete && task.complete ? 'complete' : ''}>
         <TaskDetails>
             <TaskTitle>{task.title}</TaskTitle>
@@ -138,6 +158,7 @@ export const Task: React.FC<Props> = ({ task }) => {
                 ...task,
                 complete: !task?.complete,
             })}>{taskStatusLabel}</TaskComplete>
+            <TaskEdit onClick={() => edit(task)}>Edit</TaskEdit>
             <TaskDelete onClick={() => removeTask(task)}>Delete</TaskDelete>
         </TaskActions>
     </TaskWrapper>

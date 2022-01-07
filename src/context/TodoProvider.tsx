@@ -21,11 +21,11 @@ export const TodoProvider: React.FC = ({ children, ...props }) => {
     const editTask = React.useCallback(
         (task: ITask) => dispatch(updateTask(task)),
         [dispatch, updateTask]
-    );;
+    );
     const deleteTask = React.useCallback(
         (task: ITask) => dispatch(removeTask(task)),
         [dispatch, removeTask]
-    );;
+    );
 
     const defaultState = { saveTask, editTask, deleteTask, }
 
