@@ -90,11 +90,11 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can 
-export {};
+// export {};
 
-import { version } from "../package.json";
+const { version } = require("../package.json");
 
-const CACHE_NAME = `static-cache-${1}`;
+const CACHE_NAME = `static-cache-${version}`;
 const filesToCache = ["/"];
 
 /**

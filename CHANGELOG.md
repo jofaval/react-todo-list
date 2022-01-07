@@ -16,6 +16,9 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Refactor complete status change into a separate `styled` component
 - Add some `service-worker` code
 
+### Fixed
+- Trying to import a variable from `package.json` with `require { ... }` instead of `require(...)`
+
 ### Detected
 - The `service-worker` does not work online
 
