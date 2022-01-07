@@ -35,6 +35,8 @@ const TaskWrapper = styled.div`
     &:is(.complete) {
         // border-color: ${props => props.theme.secondaryColor};
         box-shadow: 0 0px 25px ${props => props.theme.secondaryColorShadow};
+        max-width: 90%;
+        margin-left: 10%;
     }
 `
 
