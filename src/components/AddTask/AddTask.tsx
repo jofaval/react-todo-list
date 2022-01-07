@@ -50,6 +50,7 @@ const Label = styled.label`
 
 const initialTask: ITask = {
   title: '',
+  description: '',
   complete: false,
 };
 
@@ -116,9 +117,9 @@ export const AddTask: React.FC<Props> = () => {
           <Label>Description</Label>
           <AddTaskInput
               type="text"
-              id="body"
+              id="description"
               placeholder="Description"
-              value={task?.title}
+              value={task?.description}
               onChange={handleTaskData}
           />
         </AddTaskElement>

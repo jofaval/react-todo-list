@@ -39,10 +39,11 @@ const TaskWrapper = styled.div`
 
 const TaskDetails = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    margin: 1rem;
     margin-right: auto;
 `
 
@@ -56,8 +57,17 @@ const TaskActions = styled.div`
 const TaskTitle = styled.h4`
     font-size: 1rem;
     text-align: left;
+    margin: 0;
 
     color: ${props => props.theme.mainColor};
+`
+
+const TaskDescription = styled.h5`
+    text-align: left;
+    margin: 0;
+    font-weight: normal;
+
+    color: ${props => props.theme.mainColorAccent};
 `
 
 const TaskButton = styled(Button)`
@@ -102,6 +112,7 @@ export const Task: React.FC<Props> = ({ task }) => {
     return <TaskWrapper className={'Task ' + task?.complete && task.complete ? 'complete' : ''}>
         <TaskDetails>
             <TaskTitle>{task.title}</TaskTitle>
+            <TaskDescription>{task?.description}</TaskDescription>
         </TaskDetails>
 
         <TaskActions>

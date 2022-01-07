@@ -1,6 +1,7 @@
-interface ITask {
+interface ITask extends Record<string,any> {
     id?: string
     title: string
+    description?: string
     complete?: boolean
 }
 
