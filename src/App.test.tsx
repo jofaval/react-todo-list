@@ -108,3 +108,31 @@ test('update a task', async () => {
   // Check if exists
   expect(screen.queryByText(/Edited task/i)).toBeInTheDocument();
 });
+
+test('editting changes the input value', async () => {
+  const store: Store<TaskState, TaskAction> & {
+    dispatch: DispatchType
+  } = createStore(reducer, applyMiddleware(thunk))
+
+  render(<Provider store={store}>
+    <App />
+  </Provider>);
+
+  // Set task data
+  const title = screen.getByPlaceholderText(/Title/i);
+  fireEvent.change(title, { target: { value: 'New task' } });
+
+  // Create the task
+  const addTaskButton = screen.getByText(/ADD TASK/iu);
+  fireEvent.click(addTaskButton);
+
+  // Change the input title
+  fireEvent.change(title, { target: { value: 'Changed task' } });
+
+  // Edit the task
+  const taskEditButton = screen.getAllByText(/EDIT/i);
+  taskEditButton.map(button => fireEvent.click(button))
+
+  // Check if exists
+  expect(screen.queryByText(/Changed task/i)).not.toBeInTheDocument();
+});
