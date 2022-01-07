@@ -111,7 +111,7 @@ const TaskComplete = styled(TaskButton)`
 `
 
 const TaskEdit = styled(TaskButton)`
-    filter: hue-rotate(-50deg);
+    filter: hue-rotate(-50deg) brightness(1.25);
 `
 
 export const Task: React.FC<Props> = ({ task }) => {
