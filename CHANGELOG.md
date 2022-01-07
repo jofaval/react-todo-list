@@ -14,6 +14,10 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Modified
 - Refactor complete status change into a separate `styled` component
+- Add some `service-worker` code
+
+### Detected
+- The `service-worker` does not work online
 
 ## 2022-01-06
 ### Added
