@@ -24,6 +24,8 @@ const TaskWrapper = styled.div`
     box-shadow: 0 4px 10px rgba(0,0,0,.1);
     border: 2px solid transparent;
 
+    transition: all .2s;
+
     position: relative;
 
     &:is(:hover, :focus, :active) {
@@ -33,6 +35,7 @@ const TaskWrapper = styled.div`
     }
 
     &:is(.complete) {
+        transition: all .2s;
         // border-color: ${props => props.theme.secondaryColor};
         box-shadow: 0 0px 25px ${props => props.theme.secondaryColorShadow};
         max-width: 90%;
