@@ -2,6 +2,9 @@
 All the changes, additions, bugfixes, etc. made to this project.
 
 ## 2022-01-06
+### Modified
+- User input value on `<AddTask>` gets trimmed
+
 ### Fixed
 - Complete button not changing to it's own color when hovered
 

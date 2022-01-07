@@ -65,9 +65,15 @@ export const AddTask: React.FC<Props> = () => {
   const todoCtx = useContext(TodoContext);
 
   const handleTaskData = (e: React.FormEvent<HTMLInputElement>) => {
+    let value: any = e.currentTarget.value;
+
+    // Trim user input only if it's a String
+    if (typeof value === 'string' || value instanceof String)
+      value = value.trim();
+
     setTask({
       ...task,
-      [e.currentTarget.id]: e.currentTarget.value,
+      [e.currentTarget.id]: value,
     })
   }
 
