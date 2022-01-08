@@ -45,6 +45,15 @@ export function finishEditingTask(task: ITask) {
   return createActionDispatcher(action)
 }
 
-export const createActionDispatcher = (action: TaskAction) => {
+export function setSearchedTask(value: string) {
+  const action: SearchAction = {
+    type: actionTypes.SET_SEARCHED_TASK,
+    value,
+  }
+
+  return createActionDispatcher(action)
+}
+
+export const createActionDispatcher = (action: Action) => {
   return (dispatch: DispatchType) => dispatch(action)
 }

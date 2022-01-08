@@ -1,12 +1,14 @@
 import * as actionTypes from "./actionTypes"
 import { v4 as uuidv4 } from 'uuid';
+import { combineReducers } from "redux";
 
 const initialState: TaskState = {
     tasks: [],
     editedTask: undefined,
+    searchedTask: '',
 }
 
-const reducer = (
+export const taskReducer = (
     state: TaskState = initialState,
     action: TaskAction
 ): TaskState => {
@@ -41,7 +43,25 @@ const reducer = (
         case actionTypes.FINISH_EDITING_TASK:
             return { ...state, editedTask: undefined };
     }
+
     return state
 }
 
-export default reducer
+export const searchReducer = (
+    state: TaskState = initialState,
+    action: SearchAction
+): TaskState => {
+    switch (action.type) {
+        case actionTypes.SET_SEARCHED_TASK:
+            return { ...state, searchedTask: action.value };
+    }
+
+    return state
+}
+
+const rootReducer = combineReducers({
+    taskReducer,
+    searchReducer
+})
+
+export default rootReducer;

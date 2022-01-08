@@ -19,11 +19,20 @@ export const Tasks: React.FC = ({ ...props }) => {
         shallowEqual
     )
 
+    const searchedTask: string|undefined = useSelector(
+        (state: TaskState) => state?.searchedTask,
+        shallowEqual
+    )
+
+    // Filter the tasks only if there's a task to search
+    const renderableTasks = !searchedTask ? tasks : tasks
+        .filter(({ title }) => title.includes(searchedTask ? searchedTask : ''));
+
     const renderTask = (task: ITask) => <Task key={task?.id} task={task}/>
 
-    const shouldRenderTasks = tasks && tasks?.length
+    const shouldRenderTasks = renderableTasks && renderableTasks?.length
     if (shouldRenderTasks) return <TasksContainer className="tasks">
-        {tasks.map(renderTask)}
+        {renderableTasks.map(renderTask)}
     </TasksContainer>;
 
     return <NoTasksFound>No tasks were found.</NoTasksFound>;

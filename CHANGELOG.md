@@ -2,6 +2,9 @@
 All the changes, additions, bugfixes, etc. made to this project.
 
 ## 2022-01-08
+### Added
+- Created a Task Search component to search bar to render **ONLY** the wanted task(s). Reducers are unstable atm, with it's corresponding types
+
 ### Modified
 - Successfully register the `service-worker`, just a matter of changing `unregister` to `register`
 
