@@ -105,6 +105,8 @@ export const AddTask: React.FC<Props> = (props) => {
     }
 
     setTask(tempTask);
+
+    return tempTask
   }
 
   const cleanInputs = () => {
@@ -121,8 +123,8 @@ export const AddTask: React.FC<Props> = (props) => {
 
   const addNewTask = (e: React.FormEvent) => {
     e.preventDefault()
-    prepareTask();
-    if (todoCtx) todoCtx.saveTask(task)
+    const cleanTask = prepareTask();
+    if (todoCtx) todoCtx.saveTask(cleanTask)
     cleanInputs();
   }
 
@@ -135,10 +137,10 @@ export const AddTask: React.FC<Props> = (props) => {
 
   const updateTask = (e: React.FormEvent) => {
     e.preventDefault()
-    prepareTask();
+    const cleanTask = prepareTask();
     if (todoCtx) {
-      todoCtx.editTask(task)
-      stopEditing(task);
+      todoCtx.editTask(cleanTask)
+      stopEditing(cleanTask);
     }
     cleanInputs();
   }

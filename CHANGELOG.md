@@ -1,6 +1,10 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-08
+### Fixed
+- It now properly trims the inputted data
+
 ## 2022-01-07
 ### Added
 - Create and implement the edit functionality, with:
