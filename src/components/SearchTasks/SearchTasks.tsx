@@ -53,6 +53,7 @@ export const SearchTasks: React.FC = () => {
             placeholder='Task...'
             className={id}
             type="search"
+            spellCheck={true}
             onChange={handleSearchInput}
         />
     </Container>;
