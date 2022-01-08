@@ -148,7 +148,7 @@ export const Task: React.FC<Props> = ({ task }) => {
 
     const TaskContainer = task?.complete ? TaskCompleteWrapper : TaskWrapper;
 
-    return <TaskContainer className="task">
+    return <TaskContainer className="task" id={task?.id}>
         <TaskDetails>
             <TaskTitle>{task.title}</TaskTitle>
             <TaskDescription>{task?.description}</TaskDescription>
