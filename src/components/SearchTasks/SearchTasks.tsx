@@ -14,7 +14,8 @@ const SearchInput = styled.input`
     border: none;
     outline: none;
     color: ${props => props.theme.mainColor};
-    padding: 1rem;
+    padding: .5rem;
+    margin: .5rem;
     border-left 3px solid ${props => props.theme.mainColor};
     font-size: 1rem;
 `
