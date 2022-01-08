@@ -1,16 +1,16 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
-
-import { createStore, applyMiddleware, Store } from "redux"
+import { createStore, applyMiddleware, Store, Action } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
-import reducer from "./store/reducer"
+import persistingReducer from "./store/persistingReducer"
+import { PersistPartial } from 'redux-persist/es/persistReducer';
 
 test('init app', () => {
-  const store: Store<TaskState, TaskAction> & {
+  const store: Store<PersistPartial, Action<any>> & {
     dispatch: DispatchType
-  } = createStore(reducer, applyMiddleware(thunk))
+  } = createStore(persistingReducer, applyMiddleware(thunk))
 
   render(<Provider store={store}>
     <App />
@@ -18,9 +18,9 @@ test('init app', () => {
 });
 
 test('renders to-do list app', () => {
-  const store: Store<TaskState, TaskAction> & {
+  const store: Store<PersistPartial, Action<any>> & {
     dispatch: DispatchType
-  } = createStore(reducer, applyMiddleware(thunk))
+  } = createStore(persistingReducer, applyMiddleware(thunk))
 
   render(<Provider store={store}>
     <App />
@@ -31,9 +31,9 @@ test('renders to-do list app', () => {
 });
 
 test('create a task', async () => {
-  const store: Store<TaskState, TaskAction> & {
+  const store: Store<PersistPartial, Action<any>> & {
     dispatch: DispatchType
-  } = createStore(reducer, applyMiddleware(thunk))
+  } = createStore(persistingReducer, applyMiddleware(thunk))
 
   render(<Provider store={store}>
     <App />
@@ -53,9 +53,9 @@ test('create a task', async () => {
 });
 
 test('delete a task', async () => {
-  const store: Store<TaskState, TaskAction> & {
+  const store: Store<PersistPartial, Action<any>> & {
     dispatch: DispatchType
-  } = createStore(reducer, applyMiddleware(thunk))
+  } = createStore(persistingReducer, applyMiddleware(thunk))
 
   render(<Provider store={store}>
     <App />
@@ -78,9 +78,9 @@ test('delete a task', async () => {
 });
 
 test('update a task', async () => {
-  const store: Store<TaskState, TaskAction> & {
+  const store: Store<PersistPartial, Action<any>> & {
     dispatch: DispatchType
-  } = createStore(reducer, applyMiddleware(thunk))
+  } = createStore(persistingReducer, applyMiddleware(thunk))
 
   render(<Provider store={store}>
     <App />
@@ -110,9 +110,9 @@ test('update a task', async () => {
 });
 
 test('editting changes the input value', async () => {
-  const store: Store<TaskState, TaskAction> & {
+  const store: Store<PersistPartial, Action<any>> & {
     dispatch: DispatchType
-  } = createStore(reducer, applyMiddleware(thunk))
+  } = createStore(persistingReducer, applyMiddleware(thunk))
 
   render(<Provider store={store}>
     <App />
