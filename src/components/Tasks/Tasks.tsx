@@ -26,7 +26,7 @@ export const Tasks: React.FC = ({ ...props }) => {
 
     // Filter the tasks only if there's a task to search
     const renderableTasks = !searchedTask ? tasks : tasks
-        .filter(({ title }) => title.includes(searchedTask ? searchedTask : ''));
+        .filter(({ title }) => title.toLowerCase().includes(searchedTask ? searchedTask.toLowerCase() : ''));
 
     const renderTask = (task: ITask) => <Task key={task?.id} task={task}/>
 
@@ -34,6 +34,9 @@ export const Tasks: React.FC = ({ ...props }) => {
     if (shouldRenderTasks) return <TasksContainer className="tasks">
         {renderableTasks.map(renderTask)}
     </TasksContainer>;
+
+    // If a search criteria was given, change the Not Found text
+    if (searchedTask) return <NoTasksFound>No tasks were found with the given search criteria.</NoTasksFound>;
 
     return <NoTasksFound>No tasks were found.</NoTasksFound>;
 };

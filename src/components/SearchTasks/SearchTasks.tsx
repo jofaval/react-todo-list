@@ -32,7 +32,7 @@ const SearchToggle = styled(Button)`
 const id: string = 'tasks-search';
 export const SearchTasks: React.FC = () => {
     const dispatch: Dispatch<any> = useDispatch()
-  
+
     const searchValue = React.useCallback(
       (value: string) => dispatch(setSearchedTask(value)),
       [dispatch, setSearchedTask]
