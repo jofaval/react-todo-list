@@ -11,6 +11,7 @@ All the changes, additions, bugfixes, etc. made to this project.
   - Globalize them, now there's a `State` and `Action` types that unionize all the `States` and `Actions`
   - Change all the types where used
 - The search bar can now search case insentively and now provides a different "Not Found" text
+- Now persist imports come from `/lib/` instead of `/es/`, as it gave me an error previously, just making sure, it may have been because `es` is not actually a module dependency
 
 ### Fixed
 - It now properly trims the inputted data

@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, Store, Action } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import persistingReducer from "./store/persistingReducer"
-import { PersistPartial } from 'redux-persist/es/persistReducer';
+import { PersistPartial } from 'redux-persist/lib/persistReducer';
 
 const store: Store<PersistPartial, Action<any>> & {
   dispatch: DispatchType

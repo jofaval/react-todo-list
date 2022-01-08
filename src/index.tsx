@@ -13,7 +13,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import Loading from './components/Loading/Loading';
 import persistingReducer from './store/persistingReducer';
-import { PersistPartial } from 'redux-persist/es/persistReducer';
+import { PersistPartial } from 'redux-persist/lib/persistReducer';
 
 const store: Store<PersistPartial, Action<any>> & {
   dispatch: DispatchType
