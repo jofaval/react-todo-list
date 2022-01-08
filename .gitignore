@@ -25,3 +25,4 @@ yarn-error.log*
 # local files
 todo
 /modules_node
+src/backups/*
