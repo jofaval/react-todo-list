@@ -194,8 +194,8 @@ export const AddTask: React.FC<Props> = (props) => {
   </Wrapper>
 }
 
-const mapStateToProps = (state: TaskState) => {
-  const { editedTask } = state;
+const mapStateToProps = (state: State) => {
+  const { editedTask } = state.taskReducer;
 
   return { task: editedTask };
 };

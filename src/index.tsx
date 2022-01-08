@@ -5,26 +5,19 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore, applyMiddleware, Store } from "redux"
+import { createStore, applyMiddleware, Store, Action } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
-import reducer from "./store/reducer"
 
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import { PersistGate } from 'redux-persist/integration/react'
 import Loading from './components/Loading/Loading';
- 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
+import persistingReducer from './store/persistingReducer';
+import { PersistPartial } from 'redux-persist/es/persistReducer';
 
-const persistedReducer = persistReducer(persistConfig, reducer)
-
-const store: Store<TaskState, TaskAction> & {
+const store: Store<PersistPartial, Action<any>> & {
   dispatch: DispatchType
-} = createStore(persistedReducer, applyMiddleware(thunk))
+} = createStore(persistingReducer, applyMiddleware(thunk))
 const persistor = persistStore(store)
 
 const rootElement = document.getElementById('root');

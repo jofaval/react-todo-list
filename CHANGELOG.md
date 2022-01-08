@@ -7,6 +7,9 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Modified
 - Successfully register the `service-worker`, just a matter of changing `unregister` to `register`
+- Add all the necessary types and reducer states,
+  - Globalize them, now there's a `State` and `Action` types that unionize all the `States` and `Actions`
+  - Change all the types where used
 
 ### Fixed
 - It now properly trims the inputted data

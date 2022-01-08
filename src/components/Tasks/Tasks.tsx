@@ -15,12 +15,12 @@ const NoTasksFound = styled.h2`
 
 export const Tasks: React.FC = ({ ...props }) => {
     const tasks: readonly ITask[] = useSelector(
-        (state: TaskState) => state.tasks,
+        (state: State) => state.taskReducer.tasks,
         shallowEqual
     )
 
     const searchedTask: string|undefined = useSelector(
-        (state: TaskState) => state?.searchedTask,
+        (state: State) => state.searchReducer.searchedTask,
         shallowEqual
     )
 

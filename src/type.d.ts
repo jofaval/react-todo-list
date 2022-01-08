@@ -9,8 +9,16 @@ interface ITask extends Record<string,any> {
 type TaskState = {
     tasks: ITask[]
     editedTask?: ITask,
+}
+
+type SearchState = {
     searchedTask?: string,
 }
+
+type State = {
+    taskReducer: TaskState
+    searchReducer: SearchState
+};
 
 type TaskAction = {
     type: string
@@ -26,4 +34,4 @@ type Action = TaskAction | SearchAction;
 
 type DispatchType = (args: Action) => Action
 
-type TStore = Store<TaskState, Action>
+type TStore = Store<State, Action>
