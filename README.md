@@ -1,25 +1,31 @@
 # To-Do List with React #
+
 Project started as a playground and warmup for a technical interview (at the start).
 
 ## Description
+
 The basic idea is to provide a home screen with a list of tasks with a completition status, Mobile-First.
 
 ### Why?
+
 Have I not done a To-Do list before? yes, with react.js? yes I have, without it? we, *almost* all, have done it. But it's a good playground for a component structure testing.
 
 ## Pre-Requirements
 
 ### Testing
+
 - `react-testing-library`
 - `jest`
 
 ### Libraries
+
 - `typescript`
 - `react.js`
 - `redux`
 - `styled-components`
 
 ### CI/CD
+
 - `Github Actions`
 
 ## How to use?
