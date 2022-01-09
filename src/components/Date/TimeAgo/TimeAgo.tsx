@@ -40,11 +40,37 @@ interface Props {
     children?: ReactNode
 }
 
+const miliseconds = 1000;
+const seconds: number = 60 * miliseconds;
+const minutes =  1 * seconds;
+const timeout: number = minutes;
+let intervalID: number = 0;
+
 export const TimeAgo: React.FC<Props> = (props) => {
     const [since, setSince] = React.useState('Now');
 
+    const parseTime = () => {
+        if (!props.time) return;
+
+        setSince(timeSince(props.time));
+    }
+
     useEffect(() => {
-        if (props?.time) setSince(timeSince(props.time));
+        // Initialize a new interval
+        intervalID = window.setInterval(parseTime, timeout);
+
+        parseTime();
+
+        // Remove the interval on unMount
+        return () => clearInterval(intervalID);
+    });
+
+    useEffect(() => {
+        // Clear the previous interval if exists
+        if (intervalID) clearInterval(intervalID);
+
+        // Initialize a new interval
+        intervalID = window.setInterval(parseTime, timeout);
     }, [props?.time])
 
     return <TimeSinceContainer title={since + ' ago'}>{since} ago</TimeSinceContainer>;
