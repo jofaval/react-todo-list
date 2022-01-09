@@ -9,7 +9,7 @@ import { createStore, applyMiddleware, Store, Action } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
-import { persistStore, persistReducer } from 'redux-persist'
+import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import Loading from './components/Loading/Loading';
 import persistingReducer from './store/persistingReducer';
