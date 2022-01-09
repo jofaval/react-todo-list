@@ -7,6 +7,9 @@ All the changes, additions, bugfixes, etc. made to this project.
   - https://dev.to/cassiolacerda/with-redux-3g41
   - https://github.com/aohua/redux-state-sync
 - Added `created_at` and `updated_at` task fields
+- Created `Date` components to display the Task `updated_at` attrbiute:
+  - `<DateLocale>` to display the date in date format
+  - `<TimeAgo>` to display the time since the given timestamp
 
 ## 2022-01-08
 ### Added

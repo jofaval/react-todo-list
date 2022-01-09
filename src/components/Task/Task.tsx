@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Button from "../Buttons/Button/Button";
 import { TodoContext } from "src/context/TodoProvider";
 import { finishEditingTask, setEditedTask } from "src/store/actionCreator";
+import DateLocale from "../Date/DateLocale/DateLocale";
+import TimeAgo from "../Date/TimeAgo/TimeAgo";
 
 type Props = {
     task: ITask
@@ -114,6 +116,15 @@ const TaskEdit = styled(TaskButton)`
     filter: hue-rotate(-50deg) brightness(1.25);
 `
 
+const TaskDate = styled.div`
+    color: ${props => props.theme.mainColor};
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+`;
+
 export const Task: React.FC<Props> = ({ task }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
@@ -153,6 +164,17 @@ export const Task: React.FC<Props> = ({ task }) => {
             <TaskTitle>{task.title}</TaskTitle>
             <TaskDescription>{task?.description}</TaskDescription>
             <TaskCategory>{task?.category}</TaskCategory>
+            {
+                task?.updated_at
+                ? <TaskDate>
+                    <span style={{
+                        fontSize: '.85rem'
+                    }}>Updated:</span>
+                    {/* <DateLocale date={task?.updated_at */}
+                    <TimeAgo time={task?.updated_at} />
+                </TaskDate>
+                : null
+            }
         </TaskDetails>
 
         <TaskActions>
