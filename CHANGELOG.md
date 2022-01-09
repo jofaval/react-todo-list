@@ -16,6 +16,10 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Fixed
 - It now properly trims the inputted data
 
+### Detected
+- Service worker wait until not properly working
+- Changing the complete status while editing will not persist when submitting the new version
+
 ## 2022-01-07
 ### Added
 - Create and implement the edit functionality, with:
