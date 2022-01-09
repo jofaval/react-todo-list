@@ -4,6 +4,8 @@ interface ITask extends Record<string,any> {
     description?: string
     category?: string
     complete?: boolean
+    created_at?: int
+    updated_at?: int
 }
 
 type TaskState = {

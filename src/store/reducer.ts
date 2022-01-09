@@ -16,9 +16,12 @@ export const taskReducer = (
     state: TaskState = initialState?.taskReducer,
     action: TaskAction
 ): TaskState => {
+    // Get the current timestamp
+    const now = new Date().getTime();
+
     switch (action.type) {
         case actionTypes.ADD_TASK:
-            const newTask: ITask = { ...action.task, id: uuidv4(), }
+            const newTask: ITask = { ...action.task, id: uuidv4(), created_at: now, updated_at: now }
 
             return { ...state, tasks: state?.tasks?.concat(newTask), }
         case actionTypes.UPDATE_TASK:
@@ -26,7 +29,7 @@ export const taskReducer = (
                 task => {
                     if (task.id !== action.task.id) return task;
 
-                    return { ...task, ...action.task };
+                    return { ...task, ...action.task, updated_at: now };
                 }
             )
 

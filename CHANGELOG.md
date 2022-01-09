@@ -6,6 +6,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Installed `redux-state-sync` to sync between the state all the tabs, thanks to the guides at:
   - https://dev.to/cassiolacerda/with-redux-3g41
   - https://github.com/aohua/redux-state-sync
+- Added `created_at` and `updated_at` task fields
 
 ## 2022-01-08
 ### Added

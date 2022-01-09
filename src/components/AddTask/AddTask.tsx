@@ -56,6 +56,8 @@ const initialTask: ITask = {
   description: '',
   category: '',
   complete: false,
+  created_at: new Date().getTime(),
+  updated_at: new Date().getTime(),
 };
 
 const Wrapper = styled.div`
