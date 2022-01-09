@@ -15,10 +15,24 @@ import Loading from './components/Loading/Loading';
 import persistingReducer from './store/persistingReducer';
 import { PersistPartial } from 'redux-persist/lib/persistReducer';
 
+import { createStateSyncMiddleware, initStateWithPrevTab } from "redux-state-sync";
+
+// The redux state sync configuration
+const STATE_SYNC_CONFIG =  {};
+// All the redux middlewares
+const storeMiddlewares = [
+  createStateSyncMiddleware(STATE_SYNC_CONFIG),
+  thunk,
+];
+
+// Create the redux store
 const store: Store<PersistPartial, Action<any>> & {
   dispatch: DispatchType
-} = createStore(persistingReducer, applyMiddleware(thunk))
+} = createStore(persistingReducer, applyMiddleware(...storeMiddlewares))
 const persistor = persistStore(store)
+
+// Start the syncing process with the previous open tab, if exists
+initStateWithPrevTab(store);
 
 const rootElement = document.getElementById('root');
 

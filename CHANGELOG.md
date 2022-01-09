@@ -1,6 +1,12 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-09
+### Added
+- Installed `redux-state-sync` to sync between the state all the tabs, thanks to the guides at:
+  - https://dev.to/cassiolacerda/with-redux-3g41
+  - https://github.com/aohua/redux-state-sync
+
 ## 2022-01-08
 ### Added
 - Created a Task Search component to search bar to render **ONLY** the wanted task(s). Reducers are unstable atm, with it's corresponding types

@@ -55,5 +55,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Credits
 - [Ibrahima Ndaw's How to Use Redux in Your React TypeScript App](https://www.freecodecamp.org/news/how-to-use-redux-in-your-react-typescript-app/)
+- [Redux State Sync's Official Repo](https://dev.to/cassiolacerda/with-redux-3g41)
 - React's and the Official packages' documentation
 - StackOverflow
