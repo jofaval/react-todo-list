@@ -15,10 +15,12 @@ import Loading from './components/Loading/Loading';
 import persistingReducer from './store/persistingReducer';
 import { PersistPartial } from 'redux-persist/lib/persistReducer';
 
-import { createStateSyncMiddleware, initStateWithPrevTab } from "redux-state-sync";
+import { Config, createStateSyncMiddleware, initStateWithPrevTab } from "redux-state-sync";
 
 // The redux state sync configuration
-const STATE_SYNC_CONFIG =  {};
+const STATE_SYNC_CONFIG: Config =  {
+  channel: 'react_todo_list_channel',
+};
 // All the redux middlewares
 const storeMiddlewares = [
   createStateSyncMiddleware(STATE_SYNC_CONFIG),
