@@ -77,6 +77,7 @@ export const AddTask: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     if (props?.task) setTask(props.task);
+    else cleanInputs();
   }, [props?.task])
 
   const todoCtx = useContext(TodoContext);
