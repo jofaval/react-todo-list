@@ -43,6 +43,7 @@ interface Props {
 const miliseconds = 1000;
 const seconds: number = 60 * miliseconds;
 const minutes =  1 * seconds;
+// TODO: implement a proper timeout so that it changes by seconds -> minutes -> hours
 const timeout: number = minutes;
 let intervalID: number = 0;
 
