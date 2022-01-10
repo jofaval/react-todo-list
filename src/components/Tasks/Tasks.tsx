@@ -25,8 +25,19 @@ export const Tasks: React.FC = ({ ...props }) => {
     )
 
     // Filter the tasks only if there's a task to search
-    const renderableTasks = !searchedTask ? tasks : tasks
-        .filter(({ title }) => title.toLowerCase().includes(searchedTask ? searchedTask.toLowerCase() : ''));
+    const renderableTasks = tasks
+        .filter((task: ITask) => {
+            const { title } = task;
+
+                // Filter the tasks only if there's a task to search
+                if (searchedTask) {
+                    const isSearched = title.toLowerCase().includes(searchedTask.toLowerCase());
+
+                    if (!isSearched) return false;
+                }
+
+                return true;
+        });
 
     const renderTask = (task: ITask) => <Task key={task?.id} task={task}/>
 

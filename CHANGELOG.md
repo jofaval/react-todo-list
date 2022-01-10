@@ -2,6 +2,9 @@
 All the changes, additions, bugfixes, etc. made to this project.
 
 ## 2022-01-10
+### Modified
+- Changed the way the tasks to render filtering is coded for a clearer and cleaner code
+
 ### Detected
 - Tests don't work, something broke, they are eternally running
 
