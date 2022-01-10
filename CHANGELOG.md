@@ -19,6 +19,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 - `<TimeAgo>` had a `useEffect` with no dependecy array, so it reached quickly the maximum recursion update depth, Fixed by making it an empty array so it acts as the `componentDidMount` and `componentDidUnmount` counterparts
 - Fixed tests not passing because of state and store problems, fixed with the `<AppWrapper>` component
 - Fixed memory leak in `<TimeAgo>` because of the incorrect usage of `window.setInterval` switched to `NodeJS.Timeout` interval for proper a usage
+- Fixed jest tests running indefinetly by focing it's exit with the `--forceExit` argument
 
 ### Detected
 - Tests don't work, something broke, they are eternally running
