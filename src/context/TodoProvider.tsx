@@ -4,9 +4,9 @@ import { Dispatch } from "redux";
 import { addTask, updateTask, removeTask } from "../store/actionCreator";
 
 interface ITodoContext {
-    saveTask: (task: ITask | any) => void,
-    editTask: (task: ITask | any) => void,
-    deleteTask: (task: ITask | any) => void,
+    saveTask: (payload: TaskActionPayload | any) => void,
+    editTask: (payload: TaskActionPayload | any) => void,
+    deleteTask: (payload: TaskActionPayload | any) => void,
 }
 
 export const TodoContext = React.createContext<ITodoContext | null>(null);
@@ -15,15 +15,15 @@ export const TodoProvider: React.FC = ({ children, ...props }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
     const saveTask = React.useCallback(
-        (task: ITask) => dispatch(addTask({ task })),
+        (payload: TaskActionPayload) => dispatch(addTask(payload)),
         [dispatch, addTask]
     );
     const editTask = React.useCallback(
-        (task: ITask) => dispatch(updateTask({ task })),
+        (payload: TaskActionPayload) => dispatch(updateTask(payload)),
         [dispatch, updateTask]
     );
     const deleteTask = React.useCallback(
-        (task: ITask) => dispatch(removeTask({ task })),
+        (payload: TaskActionPayload) => dispatch(removeTask(payload)),
         [dispatch, removeTask]
     );
 
