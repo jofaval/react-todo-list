@@ -64,7 +64,7 @@ export const TimeAgo: React.FC<Props> = (props) => {
 
         // Remove the interval on unMount
         return () => clearInterval(intervalID);
-    });
+    }, []);
 
     useEffect(() => {
         // Clear the previous interval if exists

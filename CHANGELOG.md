@@ -8,6 +8,9 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Modified
 - Changed the way the tasks to render filtering is coded for a clearer and cleaner code
 
+### Fixed
+- `<TimeAgo>` had a `useEffect` with no dependecy array, so it reached quickly the maximum recursion update depth, Fixed by making it an empty array so it acts as the `componentDidMount` and `componentDidUnmount` counterparts
+
 ### Detected
 - Tests don't work, something broke, they are eternally running
 
