@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import styled from "styled-components";
 
 /**
@@ -45,10 +45,10 @@ const seconds: number = 60 * miliseconds;
 const minutes =  1 * seconds;
 // TODO: implement a proper timeout so that it changes by seconds -> minutes -> hours
 const timeout: number = minutes;
-let intervalID: number = 0;
 
 export const TimeAgo: React.FC<Props> = (props) => {
-    const [since, setSince] = React.useState('Now');
+    const [since, setSince] = useState('Now');
+    const [intervalID, setIntervalID] = useState(0);
 
     const parseTime = () => {
         if (!props.time) return;
@@ -58,7 +58,7 @@ export const TimeAgo: React.FC<Props> = (props) => {
 
     useEffect(() => {
         // Initialize a new interval
-        intervalID = window.setInterval(parseTime, timeout);
+        setIntervalID(window.setInterval(parseTime, timeout));
 
         parseTime();
 
@@ -71,7 +71,7 @@ export const TimeAgo: React.FC<Props> = (props) => {
         if (intervalID) clearInterval(intervalID);
 
         // Initialize a new interval
-        intervalID = window.setInterval(parseTime, timeout);
+        setIntervalID(window.setInterval(parseTime, timeout));
     }, [props?.time])
 
     return <TimeSinceContainer title={since + ' ago'}>{since} ago</TimeSinceContainer>;
