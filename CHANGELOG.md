@@ -7,6 +7,9 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Fully implement a show `complete` toggle with it's corresponding `settingsReducer` and group of options and a `<TodoSettings />` component
 - Create an `<ErrorBoundary>` with it's own `<ErrorPage>` to handle errors in a better manner
 
+### Installed
+- `timers-browserify` for a proper timer usage with memory leak control
+
 ### Modified
 - Changed the way the tasks to render filtering is coded for a clearer and cleaner code
 - Fully realize the concept of extending an Action parent interface and having payloads for the actions with it's corresponding types, so that it is now properly typed
@@ -15,6 +18,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Fixed
 - `<TimeAgo>` had a `useEffect` with no dependecy array, so it reached quickly the maximum recursion update depth, Fixed by making it an empty array so it acts as the `componentDidMount` and `componentDidUnmount` counterparts
 - Fixed tests not passing because of state and store problems, fixed with the `<AppWrapper>` component
+- Fixed memory leak in `<TimeAgo>` because of the incorrect usage of `window.setInterval` switched to `NodeJS.Timeout` interval for proper a usage
 
 ### Detected
 - Tests don't work, something broke, they are eternally running

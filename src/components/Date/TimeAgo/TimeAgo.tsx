@@ -1,6 +1,8 @@
 import React, { ReactNode, useEffect, useState } from "react"
 import styled from "styled-components";
 
+const timers = require("timers-browserify");
+
 /**
  * The time since the given moment
  * 
@@ -41,14 +43,14 @@ interface Props {
 }
 
 const miliseconds = 1000;
-const seconds: number = 60 * miliseconds;
+const seconds: number = 1 * miliseconds;
 const minutes =  1 * seconds;
 // TODO: implement a proper timeout so that it changes by seconds -> minutes -> hours
 const timeout: number = minutes;
 
 export const TimeAgo: React.FC<Props> = (props) => {
     const [since, setSince] = useState('Now');
-    const [intervalID, setIntervalID] = useState(0);
+    const [intervalID, setIntervalID] = useState<NodeJS.Timeout|undefined>(undefined);
 
     const parseTime = () => {
         if (!props.time) return;
@@ -56,22 +58,41 @@ export const TimeAgo: React.FC<Props> = (props) => {
         setSince(timeSince(props.time));
     }
 
-    useEffect(() => {
+    const startInterval = () => {
+        // Clear the previous interval if exists
+        if (intervalID) timers.clearInterval(intervalID);
+
         // Initialize a new interval
-        setIntervalID(window.setInterval(parseTime, timeout));
+        const interval = timers.setInterval(parseTime, timeout);
 
+        // Don't keep the process alive just because of the interval, to avoid memory leaks
+        interval.unref();
+
+        setIntervalID(interval);
+
+        // Execute just in case
         parseTime();
+    }
 
-        // Remove the interval on unMount
-        return () => clearInterval(intervalID);
+    const stopInterval = () => {
+        if (!intervalID) return;
+
+        // Stop the interval only if there's any interval to be stopped
+        timers.clearInterval(intervalID);
+    };
+
+    useEffect(() => {
+        startInterval();
+
+        // Remove the interval on unmount
+        return () => stopInterval();
     }, []);
 
     useEffect(() => {
-        // Clear the previous interval if exists
-        if (intervalID) clearInterval(intervalID);
+        startInterval();
 
-        // Initialize a new interval
-        setIntervalID(window.setInterval(parseTime, timeout));
+        // Remove the interval on unmount
+        return () => stopInterval();
     }, [props?.time])
 
     return <TimeSinceContainer title={since + ' ago'}>{since} ago</TimeSinceContainer>;
