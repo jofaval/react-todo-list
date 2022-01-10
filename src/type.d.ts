@@ -17,9 +17,14 @@ type SearchState = {
     searchedTask?: string,
 }
 
+type SettingsState = {
+    showComplete?: bool,
+}
+
 type State = {
     taskReducer: TaskState
     searchReducer: SearchState
+    settingsReducer: SettingsState
 };
 
 type TaskAction = {
@@ -32,7 +37,16 @@ type SearchAction = {
     value: string,
 }
 
-type Action = TaskAction | SearchAction;
+type SettingsActionPayload = {
+    showComplete?: boolean
+}
+
+type SettingsAction = {
+    type: string,
+    payload: SettingsActionPayload,
+}
+
+type Action = TaskAction | SearchAction | SettingsAction;
 
 type DispatchType = (args: Action) => Action
 

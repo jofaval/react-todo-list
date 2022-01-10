@@ -24,9 +24,8 @@ export const Tasks: React.FC = ({ ...props }) => {
         shallowEqual
     )
 
-    // TODO: implement in redux state
     const showComplete: boolean|undefined = useSelector(
-        (state: State) => true,
+        (state: State) => state?.settingsReducer?.showComplete !== false,
         shallowEqual
     )
 

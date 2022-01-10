@@ -9,7 +9,10 @@ const initialState: State = {
     },
     searchReducer: {
         searchedTask: '',
-    }
+    },
+    settingsReducer: {
+        showComplete: true,
+    },
 }
 
 export const taskReducer = (
@@ -68,9 +71,22 @@ export const searchReducer = (
     return state
 }
 
+export const settingsReducer = (
+    state: SettingsState = initialState?.settingsReducer,
+    action: SettingsAction
+): SettingsState => {
+    switch (action.type) {
+        case actionTypes.TOGGLE_SHOW_COMPLETE:
+            return { ...state, showComplete: action.payload.showComplete };
+    }
+
+    return state
+}
+
 const rootReducer = combineReducers({
     taskReducer,
-    searchReducer
+    searchReducer,
+    settingsReducer
 })
 
 export default rootReducer;

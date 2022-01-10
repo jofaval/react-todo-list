@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TodoList from "../TodoList/TodoList";
+import TodoSettings from "../TodoSettings/TodoSettings";
 
 const Container = styled.main`
     padding: .5rem;
@@ -28,6 +29,8 @@ export const Todo = (): JSX.Element => {
     return <Container id="todo-container">
         <Title>To-Do List</Title>
         <Subtitle>Creates tasks in a list</Subtitle>
+
+        <TodoSettings />
 
         <TodoList />
     </Container>

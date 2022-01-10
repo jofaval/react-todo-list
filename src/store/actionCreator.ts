@@ -54,6 +54,15 @@ export function setSearchedTask(value: string) {
   return createActionDispatcher(action)
 }
 
+export function toggleShowComplete(payload: SettingsActionPayload) {
+  const action: SettingsAction = {
+    type: actionTypes.TOGGLE_SHOW_COMPLETE,
+    payload,
+  }
+
+  return createActionDispatcher(action)
+}
+
 export const createActionDispatcher = (action: Action) => {
   return (dispatch: DispatchType) => dispatch(action)
 }
