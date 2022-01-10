@@ -14,6 +14,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Fixed
 - `<TimeAgo>` had a `useEffect` with no dependecy array, so it reached quickly the maximum recursion update depth, Fixed by making it an empty array so it acts as the `componentDidMount` and `componentDidUnmount` counterparts
+- Fixed tests not passing because of state and store problems, fixed with the `<AppWrapper>` component
 
 ### Detected
 - Tests don't work, something broke, they are eternally running

@@ -1,43 +1,27 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
-import { createStore, applyMiddleware, Store, Action } from "redux"
-import { Provider } from "react-redux"
-import thunk from "redux-thunk"
-import persistingReducer from "./store/persistingReducer"
-import { PersistPartial } from 'redux-persist/lib/persistReducer';
+import AppWrapper from './containers/AppWrapper/AppWrapper';
 
 test('init app', () => {
-  const store: Store<PersistPartial, Action<any>> & {
-    dispatch: DispatchType
-  } = createStore(persistingReducer, applyMiddleware(thunk))
-
-  render(<Provider store={store}>
+  render(<AppWrapper>
     <App />
-  </Provider>);
+  </AppWrapper>);
 });
 
 test('renders to-do list app', () => {
-  const store: Store<PersistPartial, Action<any>> & {
-    dispatch: DispatchType
-  } = createStore(persistingReducer, applyMiddleware(thunk))
-
-  render(<Provider store={store}>
+  render(<AppWrapper>
     <App />
-  </Provider>);
+  </AppWrapper>);
 
   const titleElement = screen.getByText(/To\-Do List/i);
   expect(titleElement).toBeInTheDocument();
 });
 
 test('create a task', async () => {
-  const store: Store<PersistPartial, Action<any>> & {
-    dispatch: DispatchType
-  } = createStore(persistingReducer, applyMiddleware(thunk))
-
-  render(<Provider store={store}>
+  render(<AppWrapper>
     <App />
-  </Provider>);
+  </AppWrapper>);
 
   // Set task data
   const title = screen.getByPlaceholderText(/Title/i);
@@ -48,18 +32,13 @@ test('create a task', async () => {
   fireEvent.click(addTaskButton)
 
   // Check if exists
-  const newTaskElement = screen.getByText(/New task/i);
-  expect(newTaskElement).toBeInTheDocument();
+  expect(screen.getByText(/New task/i)).toBeInTheDocument();
 });
 
 test('delete a task', async () => {
-  const store: Store<PersistPartial, Action<any>> & {
-    dispatch: DispatchType
-  } = createStore(persistingReducer, applyMiddleware(thunk))
-
-  render(<Provider store={store}>
+  render(<AppWrapper>
     <App />
-  </Provider>);
+  </AppWrapper>);
 
   // Set task data
   const title = screen.getByPlaceholderText(/Title/i);
@@ -78,13 +57,9 @@ test('delete a task', async () => {
 });
 
 test('update a task', async () => {
-  const store: Store<PersistPartial, Action<any>> & {
-    dispatch: DispatchType
-  } = createStore(persistingReducer, applyMiddleware(thunk))
-
-  render(<Provider store={store}>
+  render(<AppWrapper>
     <App />
-  </Provider>);
+  </AppWrapper>);
 
   // Set task data
   const title = screen.getByPlaceholderText(/Title/i);
@@ -110,13 +85,9 @@ test('update a task', async () => {
 });
 
 test('editting changes the input value', async () => {
-  const store: Store<PersistPartial, Action<any>> & {
-    dispatch: DispatchType
-  } = createStore(persistingReducer, applyMiddleware(thunk))
-
-  render(<Provider store={store}>
+  render(<AppWrapper>
     <App />
-  </Provider>);
+  </AppWrapper>);
 
   // Set task data
   const title = screen.getByPlaceholderText(/Title/i);

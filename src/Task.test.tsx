@@ -1,26 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { removeTask } from "src/store/actionCreator";
 import Task from './components/Task/Task';
-import { createStore, applyMiddleware, Store, Action } from "redux"
-import { Provider } from "react-redux"
-import thunk from "redux-thunk"
-import persistingReducer from "./store/persistingReducer"
-import { PersistPartial } from 'redux-persist/lib/persistReducer';
-
-const store: Store<PersistPartial, Action<any>> & {
-  dispatch: DispatchType
-} = createStore(persistingReducer, applyMiddleware(thunk))
+import AppWrapper from './containers/AppWrapper/AppWrapper';
 
 const ToTest: React.FC = () => {
-  return <Provider store={store}>
+  return <AppWrapper>
     <Task task={{
       title: 'Test',
       description: 'Desc',
       category: 'Category',
       complete: false
     }} />
-  </Provider>
+  </AppWrapper>
 }
 
 test('renders a task', () => {
