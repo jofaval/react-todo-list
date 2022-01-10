@@ -5,47 +5,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore, applyMiddleware, Store, Action } from "redux"
-import { Provider } from "react-redux"
-import thunk from "redux-thunk"
-
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/integration/react'
-import Loading from './components/Loading/Loading';
-import persistingReducer from './store/persistingReducer';
-import { PersistPartial } from 'redux-persist/lib/persistReducer';
-
-import { Config, createStateSyncMiddleware, initStateWithPrevTab } from "redux-state-sync";
-
-// The redux state sync configuration
-const STATE_SYNC_CONFIG: Config =  {
-  channel: 'react_todo_list_channel',
-};
-// All the redux middlewares
-const storeMiddlewares = [
-  createStateSyncMiddleware(STATE_SYNC_CONFIG),
-  thunk,
-];
-
-// Create the redux store
-const store: Store<PersistPartial, Action<any>> & {
-  dispatch: DispatchType
-} = createStore(persistingReducer, applyMiddleware(...storeMiddlewares))
-const persistor = persistStore(store)
-
-// Start the syncing process with the previous open tab, if exists
-initStateWithPrevTab(store);
+import AppWrapper from './containers/AppWrapper/AppWrapper';
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate loading={<Loading />} persistor={persistor}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </PersistGate>
-  </Provider>,
+  <AppWrapper>
+    <App />
+  </AppWrapper>,
   rootElement
 );
 
