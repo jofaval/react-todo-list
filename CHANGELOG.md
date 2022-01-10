@@ -1,6 +1,10 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-10
+### Detected
+- Tests don't work, something broke, they are eternally running
+
 ## 2022-01-09
 ### Added
 - Installed `redux-state-sync` to sync between the state all the tabs, thanks to the guides at:
