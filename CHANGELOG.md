@@ -2,6 +2,9 @@
 All the changes, additions, bugfixes, etc. made to this project.
 
 ## 2022-01-10
+### Added
+- Base filtering by `complete` status
+
 ### Modified
 - Changed the way the tasks to render filtering is coded for a clearer and cleaner code
 

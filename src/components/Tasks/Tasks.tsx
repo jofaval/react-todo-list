@@ -24,7 +24,12 @@ export const Tasks: React.FC = ({ ...props }) => {
         shallowEqual
     )
 
-    // Filter the tasks only if there's a task to search
+    // TODO: implement in redux state
+    const showComplete: boolean|undefined = useSelector(
+        (state: State) => true,
+        shallowEqual
+    )
+
     const renderableTasks = tasks
         .filter((task: ITask) => {
             const { title } = task;
@@ -35,6 +40,9 @@ export const Tasks: React.FC = ({ ...props }) => {
 
                     if (!isSearched) return false;
                 }
+
+                // If completes should be hided, do so
+                if (!showComplete && (task?.complete && task.complete)) return false;
 
                 return true;
         });
