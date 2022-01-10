@@ -8,7 +8,7 @@ import SearchTasks from "../SearchTasks/SearchTasks";
 const TodoListWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: ${props => props.theme.maxResponsiveWidth};
     margin: auto;
 `;
 

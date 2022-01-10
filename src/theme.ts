@@ -13,5 +13,5 @@ export const theme = {
     secondaryColorAccent: 'hsl(150, 69%, 69%)',
     secondaryColorShadow: 'hsla(150, 64%, 62%, 0.3)',
     bgColor: 'hsl(255, 100%, 100%)',
-    maxResponsiveWidth: '800px',
+    maxResponsiveWidth: '1240px',
 }

@@ -11,6 +11,9 @@ All the changes, additions, bugfixes, etc. made to this project.
   - `<DateLocale>` to display the date in date format
   - `<TimeAgo>` to display the time since the given timestamp
 
+### Modified
+- Make the content wider on desktop, went from 800px to 1240px as the limit
+
 ## 2022-01-08
 ### Added
 - Created a Task Search component to search bar to render **ONLY** the wanted task(s). Reducers are unstable atm, with it's corresponding types
