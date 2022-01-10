@@ -5,6 +5,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 ### Added
 - Base filtering by `complete` status
 - Fully implement a show `complete` toggle with it's corresponding `settingsReducer` and group of options and a `<TodoSettings />` component
+- Create an `<ErrorBoundary>` with it's own `<ErrorPage>` to handle errors in a better manner
 
 ### Modified
 - Changed the way the tasks to render filtering is coded for a clearer and cleaner code
