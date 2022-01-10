@@ -8,45 +8,54 @@ interface ITask extends Record<string,any> {
     updated_at?: int
 }
 
-type TaskState = {
+interface TaskState {
     tasks: ITask[]
     editedTask?: ITask,
 }
 
-type SearchState = {
+interface SearchState {
     searchedTask?: string,
 }
 
-type SettingsState = {
+interface SettingsState {
     showComplete?: bool,
 }
 
-type State = {
+interface State {
     taskReducer: TaskState
     searchReducer: SearchState
     settingsReducer: SettingsState
 };
 
-type TaskAction = {
+interface Action {
     type: string
+    payload: Object
+}
+
+interface TaskActionPayload {
     task: ITask
 }
 
-type SearchAction = {
-    type: string,
+interface TaskAction extends Action {
+    payload: TaskActionPayload
+}
+
+interface SearchActionPayload {
     value: string,
 }
 
-type SettingsActionPayload = {
+interface SearchAction extends Action {
+    payload: SearchActionPayload
+}
+
+interface SettingsActionPayload {
     showComplete?: boolean
 }
 
-type SettingsAction = {
+interface SettingsAction extends Action {
     type: string,
     payload: SettingsActionPayload,
 }
-
-type Action = TaskAction | SearchAction | SettingsAction;
 
 type DispatchType = (args: Action) => Action
 

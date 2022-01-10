@@ -24,27 +24,27 @@ export const taskReducer = (
 
     switch (action.type) {
         case actionTypes.ADD_TASK:
-            const newTask: ITask = { ...action.task, id: uuidv4(), created_at: now, updated_at: now }
+            const newTask: ITask = { ...action.payload.task, id: uuidv4(), created_at: now, updated_at: now }
 
             return { ...state, tasks: state?.tasks?.concat(newTask), }
         case actionTypes.UPDATE_TASK:
             const editedTasks: ITask[] = state?.tasks?.map(
                 task => {
-                    if (task.id !== action.task.id) return task;
+                    if (task.id !== action.payload.task.id) return task;
 
-                    return { ...task, ...action.task, updated_at: now };
+                    return { ...task, ...action.payload.task, updated_at: now };
                 }
             )
 
             return { ...state, tasks: editedTasks, }
         case actionTypes.REMOVE_TASK:
             const updatedTasks: ITask[] = state?.tasks.filter(
-                task => task.id !== action.task.id
+                task => task.id !== action.payload.task.id
             )
 
             return { ...state, tasks: updatedTasks, }
         case actionTypes.SET_EDITED_TASK:
-            const targetId = action.task.id;
+            const targetId = action.payload.task.id;
             const taskToEdit: ITask|undefined = state?.tasks?.find(
                 ({ id }) => id === targetId
             );
@@ -65,7 +65,7 @@ export const searchReducer = (
 ): SearchState => {
     switch (action.type) {
         case actionTypes.SET_SEARCHED_TASK:
-            return { ...state, searchedTask: action.value };
+            return { ...state, searchedTask: action.payload.value };
     }
 
     return state

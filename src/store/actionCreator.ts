@@ -1,54 +1,54 @@
 import * as actionTypes from "./actionTypes"
 
-export function addTask(task: ITask) {
+export function addTask(payload: TaskActionPayload) {
   const action: TaskAction = {
     type: actionTypes.ADD_TASK,
-    task,
+    payload,
   }
 
   return createActionDispatcher(action)
 }
 
-export function updateTask(task: ITask) {
+export function updateTask(payload: TaskActionPayload) {
   const action: TaskAction = {
     type: actionTypes.UPDATE_TASK,
-    task,
+    payload,
   }
 
   return createActionDispatcher(action)
 }
 
-export function removeTask(task: ITask) {
+export function removeTask(payload: TaskActionPayload) {
   const action: TaskAction = {
     type: actionTypes.REMOVE_TASK,
-    task,
+    payload,
   }
 
   return createActionDispatcher(action)
 }
 
-export function setEditedTask(task: ITask) {
+export function setEditedTask(payload: TaskActionPayload) {
   const action: TaskAction = {
     type: actionTypes.SET_EDITED_TASK,
-    task,
+    payload,
   }
 
   return createActionDispatcher(action)
 }
 
-export function finishEditingTask(task: ITask) {
+export function finishEditingTask(payload: TaskActionPayload) {
   const action: TaskAction = {
     type: actionTypes.FINISH_EDITING_TASK,
-    task,
+    payload,
   }
 
   return createActionDispatcher(action)
 }
 
-export function setSearchedTask(value: string) {
+export function setSearchedTask(payload: SearchActionPayload) {
   const action: SearchAction = {
     type: actionTypes.SET_SEARCHED_TASK,
-    value,
+    payload,
   }
 
   return createActionDispatcher(action)

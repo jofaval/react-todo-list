@@ -35,7 +35,7 @@ export const SearchTasks: React.FC = () => {
     const dispatch: Dispatch<any> = useDispatch()
 
     const searchValue = React.useCallback(
-      (value: string) => dispatch(setSearchedTask(value)),
+      (value: string) => dispatch(setSearchedTask({ value })),
       [dispatch, setSearchedTask]
     );
 

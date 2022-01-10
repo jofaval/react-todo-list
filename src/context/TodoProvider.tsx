@@ -15,15 +15,15 @@ export const TodoProvider: React.FC = ({ children, ...props }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
     const saveTask = React.useCallback(
-        (task: ITask) => dispatch(addTask(task)),
+        (task: ITask) => dispatch(addTask({ task })),
         [dispatch, addTask]
     );
     const editTask = React.useCallback(
-        (task: ITask) => dispatch(updateTask(task)),
+        (task: ITask) => dispatch(updateTask({ task })),
         [dispatch, updateTask]
     );
     const deleteTask = React.useCallback(
-        (task: ITask) => dispatch(removeTask(task)),
+        (task: ITask) => dispatch(removeTask({ task })),
         [dispatch, removeTask]
     );
 

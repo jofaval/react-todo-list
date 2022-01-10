@@ -8,6 +8,7 @@ All the changes, additions, bugfixes, etc. made to this project.
 
 ### Modified
 - Changed the way the tasks to render filtering is coded for a clearer and cleaner code
+- Fully realize the concept of extending an Action parent interface and having payloads for the actions with it's corresponding types, so that it is now properly typed
 
 ### Fixed
 - `<TimeAgo>` had a `useEffect` with no dependecy array, so it reached quickly the maximum recursion update depth, Fixed by making it an empty array so it acts as the `componentDidMount` and `componentDidUnmount` counterparts

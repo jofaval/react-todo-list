@@ -131,24 +131,24 @@ export const Task: React.FC<Props> = ({ task }) => {
     const context = useContext(TodoContext);
 
     const removeTask = React.useCallback(
-        (task: ITask) => dispatch(context?.deleteTask(task)),
+        (task: ITask) => dispatch(context?.deleteTask({ task })),
         [dispatch, context?.deleteTask]
     )
 
     const updateTask = React.useCallback(
-        (task: ITask) => dispatch(context?.editTask(task)),
+        (task: ITask) => dispatch(context?.editTask({ task })),
         [dispatch, context?.editTask]
     )
 
     const taskStatusLabel = !task?.complete ? 'O' : 'X';
 
     const editTask = React.useCallback(
-        (task: ITask) => dispatch(setEditedTask(task)),
+        (task: ITask) => dispatch(setEditedTask({ task })),
         [dispatch, setEditedTask]
     )
 
     const stopEdittingTask = React.useCallback(
-        (task: ITask) => dispatch(finishEditingTask(task)),
+        (task: ITask) => dispatch(finishEditingTask({ task })),
         [dispatch, finishEditingTask]
     )
 
@@ -178,10 +178,9 @@ export const Task: React.FC<Props> = ({ task }) => {
         </TaskDetails>
 
         <TaskActions>
-            <TaskComplete onClick={() => updateTask({
-                ...task,
-                complete: !task?.complete,
-            })}>{taskStatusLabel}</TaskComplete>
+            <TaskComplete onClick={() => updateTask(
+                { ...task, complete: !task?.complete, }
+            )}>{taskStatusLabel}</TaskComplete>
             <TaskEdit onClick={() => edit(task)}>Edit</TaskEdit>
             <TaskDelete onClick={() => removeTask(task)}>Delete</TaskDelete>
         </TaskActions>

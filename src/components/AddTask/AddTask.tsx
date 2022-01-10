@@ -134,7 +134,7 @@ export const AddTask: React.FC<Props> = (props) => {
   const dispatch: Dispatch<any> = useDispatch()
 
   const stopEditing = React.useCallback(
-    (task: ITask) => dispatch(finishEditingTask(task)),
+    (payload: TaskActionPayload) => dispatch(finishEditingTask(payload)),
     [dispatch, finishEditingTask]
   );
 
@@ -143,7 +143,7 @@ export const AddTask: React.FC<Props> = (props) => {
     const cleanTask = prepareTask();
     if (todoCtx) {
       todoCtx.editTask(cleanTask)
-      stopEditing(cleanTask);
+      stopEditing({ task: cleanTask });
     }
     cleanInputs();
   }
