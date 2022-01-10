@@ -9,6 +9,8 @@ const DummyApp: React.FC = () => {
   </AppWrapper>;
 }
 
+jest.useFakeTimers('modern');
+
 test('init app', () => {
   render(<DummyApp />);
 });

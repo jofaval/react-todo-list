@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 import Task from './components/Task/Task';
 import AppWrapper from './containers/AppWrapper/AppWrapper';
 
+jest.useFakeTimers('modern');
+
 const ToTest: React.FC = () => {
   return <AppWrapper>
     <Task task={{
