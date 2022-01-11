@@ -19,6 +19,7 @@ interface SearchState {
 
 interface SettingsState {
     showComplete?: bool,
+    importedState?: string
 }
 
 interface State {
@@ -50,6 +51,7 @@ interface SearchAction extends Action {
 
 interface SettingsActionPayload {
     showComplete?: boolean
+    importedState?: string
 }
 
 interface SettingsAction extends Action {

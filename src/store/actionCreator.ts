@@ -63,6 +63,15 @@ export function toggleShowComplete(payload: SettingsActionPayload) {
   return createActionDispatcher(action)
 }
 
+export function importState(payload: SettingsActionPayload) {
+  const action: SettingsAction = {
+    type: actionTypes.IMPORT_STATE,
+    payload,
+  }
+
+  return createActionDispatcher(action)
+}
+
 export const createActionDispatcher = (action: Action) => {
   return (dispatch: DispatchType) => dispatch(action)
 }

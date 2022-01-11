@@ -12,6 +12,7 @@ const initialState: State = {
     },
     settingsReducer: {
         showComplete: true,
+        importedState: undefined,
     },
 }
 
@@ -78,6 +79,13 @@ export const settingsReducer = (
     switch (action.type) {
         case actionTypes.TOGGLE_SHOW_COMPLETE:
             return { ...state, showComplete: action.payload.showComplete };
+        case actionTypes.IMPORT_STATE:
+            if (!action.payload.importedState) break;
+
+            const newRawState = action.payload.importedState;
+            const newParsedState = JSON.parse(newRawState);
+
+            return { ...newParsedState };
     }
 
     return state
