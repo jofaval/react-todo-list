@@ -13,6 +13,15 @@ type Props = {
 const AddTaskForm = styled.form`
   display: flex;
   flex-direction: column;
+  padding: 1.5rem;
+  margin: .5rem;
+  border-radius: .5rem;
+  background: linear-gradient(
+    to right,
+    ${props => props.theme.mainColor},
+    ${props => props.theme.mainColorAccent}
+  );
+  color: white;
 `;
 
 const AddTaskElement = styled.div`
@@ -29,10 +38,15 @@ const AddTaskInput = styled.input`
 
   outline: none;
   border: none;
-  border-left: 3px solid ${props => props.theme.mainColorAccent};
+  border-left: 3px solid white;
 
-  color: ${props => props.theme.mainColor};
+  color: white;
+  background: transparent;
   font-size: 14px;
+`;
+
+const AddTaskDescription = styled(AddTaskElement)`
+
 `;
 
 const AddTaskButton = styled(Button)`
@@ -44,7 +58,7 @@ const AddTaskButton = styled(Button)`
 `
 
 const Label = styled.label`
-  color: ${props => props.theme.mainColorAccent};
+  // color: ${props => props.theme.mainColorAccent};
   text-align: left;
   display: block;
   margin: .5rem auto;
@@ -69,6 +83,10 @@ const Wrapper = styled.div`
 const AddTaskSubmit = styled(AddTaskButton)`
   display: none;
 `
+
+const AddTaskTitle = styled.h3`
+  color: ${props => props.theme.mainColor};
+`;
 
 export const AddTask: React.FC<Props> = (props) => {
   const [task, setTask] = React.useState<ITask | typeof initialTask>(
@@ -152,6 +170,8 @@ export const AddTask: React.FC<Props> = (props) => {
   const isEditing = task?.id ? true : false;
 
   return <Wrapper>
+    <AddTaskTitle>Task form</AddTaskTitle>
+
       <AddTaskForm onSubmit={submit} className="Add-task">
         <AddTaskElement>
           <Label>Title</Label>
@@ -164,7 +184,7 @@ export const AddTask: React.FC<Props> = (props) => {
               onChange={handleTaskData}
           />
         </AddTaskElement>
-        <AddTaskElement>
+        <AddTaskDescription>
           <Label>Description</Label>
           <AddTaskInput
               type="text"
@@ -173,7 +193,7 @@ export const AddTask: React.FC<Props> = (props) => {
               value={task?.description}
               onChange={handleTaskData}
           />
-        </AddTaskElement>
+        </AddTaskDescription>
         <AddTaskElement>
           <Label>Category</Label>
           <AddTaskInput

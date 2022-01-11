@@ -12,6 +12,9 @@ All the changes, additions, bugfixes, etc. made to this project.
   - Deploy section
 - Add `box-sizing: border-box;` so it doesn't break whenever a padding is added, and the full width gets calculated WITH the border and not FROM.
 
+### Modified
+- Redesign a little bit the task form in `<AddTask>`
+
 ## 2022-01-10
 ### Added
 - Base filtering by `complete` status
