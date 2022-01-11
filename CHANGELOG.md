@@ -11,6 +11,7 @@ All the changes, additions, bugfixes, etc. made to this project.
   - Testing Section
   - Deploy section
 - Add `box-sizing: border-box;` so it doesn't break whenever a padding is added, and the full width gets calculated WITH the border and not FROM.
+- Add placeholder color in Task form
 
 ### Modified
 - Redesign a little bit the task form in `<AddTask>`
