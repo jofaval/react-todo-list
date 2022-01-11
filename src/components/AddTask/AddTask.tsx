@@ -43,19 +43,20 @@ const AddTaskInput = styled.input`
   color: white;
   background: transparent;
   font-size: 14px;
-
   
   &::placeholder {
     color: white;
-    opacity: 1; /* Firefox */
+    opacity: .5; /* Firefox */
   }
 
   &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
+    color: white;
+    opacity: .5;
   }
 
   &::-ms-input-placeholder { /* Microsoft Edge */
-  color: white;
+    color: white;
+    opacity: .5;
   }
 `;
 
