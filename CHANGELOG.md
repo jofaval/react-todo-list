@@ -1,6 +1,15 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+## 2022-01-11
+### Added
+- Vastly improve the README.md with:
+  - Sections reestructuring
+  - Features section
+  - Design pattern section
+  - Tech stack section
+  - Testing Section
+
 ## 2022-01-10
 ### Added
 - Base filtering by `complete` status
