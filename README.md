@@ -20,6 +20,8 @@ Have I not done a To-Do list before? yes, with react.js? yes I have, without it?
 
 It's been tested with Mozilla Firefox, but you can use anything you'd like
 
+*This is what will be used, you don't need to configure it*
+
 #### Testing
 
 - `react-testing-library`
@@ -40,8 +42,15 @@ It's been tested with Mozilla Firefox, but you can use anything you'd like
 
 In the folder that you may want the project, execute the following command (on Git BASH if you're running a Windows)
 
+This will clone (download) the repository locally on your device
 ```shell
 git clone https://github.com/jofaval/react-todo-list.git
+```
+
+Then you'll need to install the dependencies (if node.js is not installed, please do so before this step at, [node.js](https://nodejs.org/es/download/))
+```shell
+cd react-todo-list
+npm install
 ```
 
 ## Deploy
