@@ -76,6 +76,8 @@ Made with cra-template pwa typescript
 npx create-react-app my-app --template cra-template-pwa-typescript
 ```
 
+### Frontend
+
 - **TypeScript**
   - The static typed version of JavaScript, good for preventing errors before execution, and easier usage (since you should always know exactly what you're working with!)
 - **react.js**
@@ -90,8 +92,11 @@ npx create-react-app my-app --template cra-template-pwa-typescript
   - Cleaner styling for components with inheritance
 **jest + react-testing-library**
   - The full package for a complete Frontend testing experience
+
+### CI/CD
+
 - **Github Actions**
-  - A free CI/ID, and easy to configure for an open github repo, it's a new trend and with tons of community contributions
+  - A free CI/CD, and easy to configure for an open github repo, it's a new trend and with tons of community contributions.
 
 ## Testing
 
