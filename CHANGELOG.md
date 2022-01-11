@@ -13,6 +13,8 @@ All the changes, additions, bugfixes, etc. made to this project.
 - Add `box-sizing: border-box;` so it doesn't break whenever a padding is added, and the full width gets calculated WITH the border and not FROM.
 - Add placeholder color in Task form
 - Implement `import` reducer to change the state with a given raw JSON string
+  - Properly implemented with the functionality tested
+  - And properly implemented the export function
 
 ### Modified
 - Redesign a little bit the task form in `<AddTask>`

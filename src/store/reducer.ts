@@ -14,11 +14,23 @@ const initialState: State = {
         showComplete: true,
         importedState: undefined,
     },
+};
+
+const getImportedReducerState = (rawState: string|undefined, key: string): unknown => {
+    if (!rawState) return {};
+
+    let newParsedState = JSON.parse(rawState);
+    if (typeof newParsedState === 'string') newParsedState = JSON.parse(newParsedState);
+    const keyValue = key in newParsedState ? newParsedState[key] : '';
+    const contextualState = JSON.parse(keyValue);
+    console.log('newParsedState', contextualState);
+
+    return contextualState;
 }
 
 export const taskReducer = (
     state: TaskState = initialState?.taskReducer,
-    action: TaskAction
+    action: TaskAction & SettingsAction
 ): TaskState => {
     // Get the current timestamp
     const now = new Date().getTime();
@@ -53,6 +65,12 @@ export const taskReducer = (
             return { ...state, editedTask: taskToEdit };
         case actionTypes.FINISH_EDITING_TASK:
             return { ...state, editedTask: undefined };
+        case actionTypes.IMPORT_STATE:
+            if (!action.payload.importedState) break;
+
+            const contextualState: any = getImportedReducerState(action.payload.importedState, 'taskReducer');
+
+            return { ...contextualState };
     }
 
     return state
@@ -62,11 +80,17 @@ export const taskReducer = (
 
 export const searchReducer = (
     state: SearchState = initialState?.searchReducer,
-    action: SearchAction
+    action: SearchAction & SettingsAction
 ): SearchState => {
     switch (action.type) {
         case actionTypes.SET_SEARCHED_TASK:
             return { ...state, searchedTask: action.payload.value };
+        case actionTypes.IMPORT_STATE:
+            if (!action.payload.importedState) break;
+
+            const contextualState: any = getImportedReducerState(action.payload.importedState, 'searchReducer');
+
+            return { ...contextualState };
     }
 
     return state
@@ -82,10 +106,9 @@ export const settingsReducer = (
         case actionTypes.IMPORT_STATE:
             if (!action.payload.importedState) break;
 
-            const newRawState = action.payload.importedState;
-            const newParsedState = JSON.parse(newRawState);
+            const contextualState: any = getImportedReducerState(action.payload.importedState, 'settingsReducer');
 
-            return { ...newParsedState };
+            return { ...contextualState };
     }
 
     return state

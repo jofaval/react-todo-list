@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import TodoImport from "../TodoImport/TodoImport";
 import TodoList from "../TodoList/TodoList";
 import TodoSettings from "../TodoSettings/TodoSettings";
 
@@ -31,6 +32,7 @@ export const Todo = (): JSX.Element => {
         <Subtitle>Creates tasks in a list</Subtitle>
 
         <TodoSettings />
+        <TodoImport />
 
         <TodoList />
     </Container>
