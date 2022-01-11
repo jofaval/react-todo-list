@@ -6,6 +6,8 @@ Project started as a playground and warmup for a technical interview (at the sta
 
 The basic idea is to provide a home screen with a list of tasks with a completition status, Mobile-First.
 
+Check out the final product at [jofaval.github.io/react-todo-list](https://jofaval.github.io/react-todo-list)
+
 ### Why?
 
 Have I not done a To-Do list before? yes, with react.js? yes I have, without it? we, *almost* all, have done it. But it's a good playground for a component structure testing.
@@ -41,6 +43,12 @@ In the folder that you may want the project, execute the following command (on G
 ```shell
 git clone https://github.com/jofaval/react-todo-list.git
 ```
+
+## Deploy
+
+It's all handled by Github Actions, to see the full configuration file, check out [branching.yml](./.github/workflows/branching.yml)
+
+It publishes the build with Github Pages, deployed at [jofaval.github.io/react-todo-list](https://jofaval.github.io/react-todo-list)
 
 ## Features
 
@@ -138,3 +146,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [Redux State Sync's Official Repo](https://dev.to/cassiolacerda/with-redux-3g41)
 - React's and the Official packages' documentation
 - StackOverflow
+- Support by Github Pages and Github Actions

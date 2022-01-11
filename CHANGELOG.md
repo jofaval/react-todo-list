@@ -9,6 +9,7 @@ All the changes, additions, bugfixes, etc. made to this project.
   - Design pattern section
   - Tech stack section
   - Testing Section
+  - Deploy section
 
 ## 2022-01-10
 ### Added
