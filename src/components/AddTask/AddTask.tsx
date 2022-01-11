@@ -46,16 +46,16 @@ const AddTaskInput = styled.input`
 
   
   &::placeholder {
-    color: red;
+    color: white;
     opacity: 1; /* Firefox */
   }
 
   &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: red;
+  color: white;
   }
 
   &::-ms-input-placeholder { /* Microsoft Edge */
-  color: red;
+  color: white;
   }
 `;
 
