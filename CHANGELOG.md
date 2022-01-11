@@ -10,6 +10,7 @@ All the changes, additions, bugfixes, etc. made to this project.
   - Tech stack section
   - Testing Section
   - Deploy section
+- Add `box-sizing: border-box;` so it doesn't break whenever a padding is added, and the full width gets calculated WITH the border and not FROM.
 
 ## 2022-01-10
 ### Added
