@@ -125,6 +125,26 @@ const TaskDate = styled.div`
     right: 1rem;
 `;
 
+const TaskToggleComplete = styled.input`
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid ${props => props.theme.secondaryColorShadow};
+    width: 1.5rem;
+    height: 1.5rem;
+    outline: none;
+    box-shadow: inset 0 5px 10px ${props => props.theme.secondaryColorShadow};
+    
+    &:checked
+    {
+        background: linear-gradient(
+            to bottom right,
+            ${props => props.theme.secondaryColor},
+            ${props => props.theme.secondaryColorShadow}
+        );
+        border-color: transparent;
+    }
+`
+
 export const Task: React.FC<Props> = ({ task }) => {
     const dispatch: Dispatch<any> = useDispatch()
 
@@ -159,7 +179,15 @@ export const Task: React.FC<Props> = ({ task }) => {
 
     const TaskContainer = task?.complete ? TaskCompleteWrapper : TaskWrapper;
 
+    const handleToggleComplete = (e: React.FormEvent<HTMLInputElement>) => {
+        const value: boolean = e.currentTarget.checked;
+
+        updateTask({ ...task, complete: value });
+    };
+
     return <TaskContainer className="task" id={task?.id}>
+        <TaskToggleComplete type="checkbox" onChange={handleToggleComplete} checked={task?.complete} />
+
         <TaskDetails>
             <TaskTitle>{task.title}</TaskTitle>
             <TaskDescription>{task?.description}</TaskDescription>
