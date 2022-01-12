@@ -1,6 +1,12 @@
 # CHANGELOG #
 All the changes, additions, bugfixes, etc. made to this project.
 
+This format is based on the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## 2022-01-12
+### Added
+- CHANGELOG format is now documented
+
 ## 2022-01-11
 ### Added
 - Vastly improve the README.md with:
